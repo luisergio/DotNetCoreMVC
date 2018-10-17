@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Parsed.Models;
@@ -20,6 +21,8 @@ namespace Parsed.Controllers
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
+        private readonly IStringLocalizer<ManageController> _localizer;
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -52,7 +55,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var model = new IndexViewModel
@@ -79,7 +82,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var email = user.Email;
@@ -88,7 +91,7 @@ namespace Parsed.Controllers
                 var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
                 if (!setEmailResult.Succeeded)
                 {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
+                    throw new ApplicationException(_localizer["UnexpectedErrorSettingEmail", user.Id].Value );
                 }
             }
 
@@ -98,11 +101,11 @@ namespace Parsed.Controllers
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
+                    throw new ApplicationException(_localizer["UnexpectedErrorSettingPhone", user.Id].Value);
                 }
             }
 
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = _localizer["ProfileUpdated"];
             return RedirectToAction(nameof(Index));
         }
 
@@ -118,7 +121,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -126,7 +129,7 @@ namespace Parsed.Controllers
             var email = user.Email;
             await _emailSender.SendEmailConfirmationAsync(email, callbackUrl);
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = _localizer["VerificationEmailSent"];
             return RedirectToAction(nameof(Index));
         }
 
@@ -136,7 +139,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
@@ -161,7 +164,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
@@ -184,7 +187,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
@@ -210,7 +213,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var addPasswordResult = await _userManager.AddPasswordAsync(user, model.NewPassword);
@@ -232,7 +235,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var model = new ExternalLoginsViewModel { CurrentLogins = await _userManager.GetLoginsAsync(user) };
@@ -264,7 +267,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var info = await _signInManager.GetExternalLoginInfoAsync(user.Id);
@@ -293,7 +296,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var result = await _userManager.RemoveLoginAsync(user, model.LoginProvider, model.ProviderKey);
@@ -313,7 +316,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var model = new TwoFactorAuthenticationViewModel
@@ -332,7 +335,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             if (!user.TwoFactorEnabled)
@@ -350,7 +353,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var disable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, false);
@@ -369,7 +372,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var model = new EnableAuthenticatorViewModel();
@@ -385,7 +388,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             if (!ModelState.IsValid)
@@ -441,7 +444,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             await _userManager.SetTwoFactorEnabledAsync(user, false);
@@ -457,7 +460,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             if (!user.TwoFactorEnabled)
@@ -475,7 +478,7 @@ namespace Parsed.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             if (!user.TwoFactorEnabled)
