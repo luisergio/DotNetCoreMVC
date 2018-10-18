@@ -91,7 +91,7 @@ namespace Parsed.Controllers
                 var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
                 if (!setEmailResult.Succeeded)
                 {
-                    throw new ApplicationException(_localizer["UnexpectedErrorSettingEmail", user.Id].Value );
+                    throw new ApplicationException(_localizer["ErrorSettingEmail", user.Id].Value );
                 }
             }
 
@@ -101,11 +101,11 @@ namespace Parsed.Controllers
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    throw new ApplicationException(_localizer["UnexpectedErrorSettingPhone", user.Id].Value);
+                    throw new ApplicationException(_localizer["ErrorSettingPhone", user.Id].Value);
                 }
             }
 
-            StatusMessage = _localizer["ProfileUpdated"];
+            StatusMessage = _localizer["ProfileUpdated"].Value;
             return RedirectToAction(nameof(Index));
         }
 
@@ -129,7 +129,7 @@ namespace Parsed.Controllers
             var email = user.Email;
             await _emailSender.SendEmailConfirmationAsync(email, callbackUrl);
 
-            StatusMessage = _localizer["VerificationEmailSent"];
+            StatusMessage = _localizer["VerificationEmailSent"].Value;
             return RedirectToAction(nameof(Index));
         }
 
@@ -176,7 +176,7 @@ namespace Parsed.Controllers
 
             await _signInManager.SignInAsync(user, isPersistent: false);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = _localizer["PasswordHasBenChanged"].Value;
 
             return RedirectToAction(nameof(ChangePassword));
         }
@@ -224,7 +224,7 @@ namespace Parsed.Controllers
             }
 
             await _signInManager.SignInAsync(user, isPersistent: false);
-            StatusMessage = "Your password has been set.";
+            StatusMessage = _localizer["PasswordHasBenSet"].Value;
 
             return RedirectToAction(nameof(SetPassword));
         }
@@ -273,19 +273,19 @@ namespace Parsed.Controllers
             var info = await _signInManager.GetExternalLoginInfoAsync(user.Id);
             if (info == null)
             {
-                throw new ApplicationException($"Unexpected error occurred loading external login info for user with ID '{user.Id}'.");
+                throw new ApplicationException(_localizer["ErrorLoadingExternalLoginInfo", user.Id].Value);
             }
 
             var result = await _userManager.AddLoginAsync(user, info);
             if (!result.Succeeded)
             {
-                throw new ApplicationException($"Unexpected error occurred adding external login for user with ID '{user.Id}'.");
+                throw new ApplicationException(_localizer["ErrorAddingExternalLoginInfo", user.Id].Value);
             }
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            StatusMessage = "The external login was added.";
+            StatusMessage = _localizer["ExternalLoginAdded"].Value;
             return RedirectToAction(nameof(ExternalLogins));
         }
 
@@ -302,11 +302,11 @@ namespace Parsed.Controllers
             var result = await _userManager.RemoveLoginAsync(user, model.LoginProvider, model.ProviderKey);
             if (!result.Succeeded)
             {
-                throw new ApplicationException($"Unexpected error occurred removing external login for user with ID '{user.Id}'.");
+                throw new ApplicationException(_localizer["ErrorRemovingExternalLogin", user.Id].Value);
             }
 
             await _signInManager.SignInAsync(user, isPersistent: false);
-            StatusMessage = "The external login was removed.";
+            StatusMessage = _localizer["ExternalLoginRemoved"].Value;
             return RedirectToAction(nameof(ExternalLogins));
         }
 
@@ -340,7 +340,7 @@ namespace Parsed.Controllers
 
             if (!user.TwoFactorEnabled)
             {
-                throw new ApplicationException($"Unexpected error occured disabling 2FA for user with ID '{user.Id}'.");
+                throw new ApplicationException(_localizer["ErrorDisabling2FA", user.Id].Value);
             }
 
             return View(nameof(Disable2fa));
@@ -359,7 +359,7 @@ namespace Parsed.Controllers
             var disable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, false);
             if (!disable2faResult.Succeeded)
             {
-                throw new ApplicationException($"Unexpected error occured disabling 2FA for user with ID '{user.Id}'.");
+                throw new ApplicationException(_localizer["ErrorDisabling2FA", user.Id].Value);
             }
 
             _logger.LogInformation("User with ID {UserId} has disabled 2fa.", user.Id);
@@ -405,7 +405,7 @@ namespace Parsed.Controllers
 
             if (!is2faTokenValid)
             {
-                ModelState.AddModelError("Code", "Verification code is invalid.");
+                ModelState.AddModelError("Code", _localizer["VerificationCodeInvalid"].Value);
                 await LoadSharedKeyAndQrCodeUriAsync(user, model);
                 return View(model);
             }
@@ -465,7 +465,7 @@ namespace Parsed.Controllers
 
             if (!user.TwoFactorEnabled)
             {
-                throw new ApplicationException($"Cannot generate recovery codes for user with ID '{user.Id}' because they do not have 2FA enabled.");
+                throw new ApplicationException(_localizer["CannotGenerateRecoveryCodes", user.Id ].Value);
             }
 
             return View(nameof(GenerateRecoveryCodes));
@@ -483,7 +483,7 @@ namespace Parsed.Controllers
 
             if (!user.TwoFactorEnabled)
             {
-                throw new ApplicationException($"Cannot generate recovery codes for user with ID '{user.Id}' as they do not have 2FA enabled.");
+                throw new ApplicationException(_localizer["CannotGenerateRecoveryCodes", user.Id].Value);
             }
 
             var recoveryCodes = await _userManager.GenerateNewTwoFactorRecoveryCodesAsync(user, 10);

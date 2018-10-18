@@ -117,49 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CannotGenerateRecoveryCodes" xml:space="preserve">
-    <value>Cannot generate recovery codes for user with ID '{0}' because they do not have 2FA enabled.</value>
+  <data name="CodeMustBeSupplied" xml:space="preserve">
+    <value>A code must be supplied for password reset.</value>
   </data>
-  <data name="ErrorAddingExternalLoginInfo" xml:space="preserve">
-    <value>Unexpected error occurred adding external login for user with ID '{0}'.</value>
+  <data name="ErrorFromExternalProvider" xml:space="preserve">
+    <value>Error from external provider: {0}</value>
   </data>
-  <data name="ErrorDisabling2FA" xml:space="preserve">
-    <value>Unexpected error occured disabling 2FA for user with ID '{0}'.</value>
+  <data name="ErrorLoadingExternalLoginInformation" xml:space="preserve">
+    <value>Error loading external login information during confirmation.</value>
   </data>
-  <data name="ErrorLoadingExternalLoginInfo" xml:space="preserve">
-    <value>Unexpected error occurred loading external login info for user with ID '{0}'.</value>
+  <data name="InvalidAuthenticationCode" xml:space="preserve">
+    <value>Invalid authenticator code.</value>
   </data>
-  <data name="ErrorRemovingExternalLogin" xml:space="preserve">
-    <value>Unexpected error occurred removing external login for user with ID '{0}'.</value>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Invalid login attempt.</value>
   </data>
-  <data name="ErrorSettingEmail" xml:space="preserve">
-    <value>Unexpected error occurred setting email for user with ID '{0}'.</value>
+  <data name="InvalidRecoveryCode" xml:space="preserve">
+    <value>Invalid recovery code entered.</value>
   </data>
-  <data name="ErrorSettingPhone" xml:space="preserve">
-    <value>Unexpected error occurred setting phone number for user with ID '{0}'.</value>
+  <data name="ResetPasswordEmailDescription" xml:space="preserve">
+    <value>Please reset your password by clicking here: &lt;a href='{0}'&gt;link&lt;/a&gt;</value>
   </data>
-  <data name="ExternalLoginAdded" xml:space="preserve">
-    <value>The external login was added.</value>
+  <data name="ResetPasswordEmailTitle" xml:space="preserve">
+    <value>Reset Password</value>
   </data>
-  <data name="ExternalLoginRemoved" xml:space="preserve">
-    <value>The external login was removed.</value>
-  </data>
-  <data name="PasswordHasBenChanged" xml:space="preserve">
-    <value>Your password has been changed.</value>
-  </data>
-  <data name="PasswordHasBenSet" xml:space="preserve">
-    <value>Your password has been set.</value>
-  </data>
-  <data name="ProfileUpdated" xml:space="preserve">
-    <value>Your profile has been updated</value>
+  <data name="UnableToLoad2FAUser" xml:space="preserve">
+    <value>Unable to load two-factor authentication user.</value>
   </data>
   <data name="UnableToLoadUser" xml:space="preserve">
     <value>Unable to load user with ID '{0}'.</value>
-  </data>
-  <data name="VerificationCodeInvalid" xml:space="preserve">
-    <value>Verification code is invalid.</value>
-  </data>
-  <data name="VerificationEmailSent" xml:space="preserve">
-    <value>Verification email sent. Please check your email.</value>
   </data>
 </root>
