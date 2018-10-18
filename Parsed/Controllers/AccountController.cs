@@ -21,7 +21,7 @@ namespace Parsed.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
-        private readonly IStringLocalizer<ManageController> _localizer;
+        private readonly IStringLocalizer<AccountController> _localizer;
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -32,12 +32,14 @@ namespace Parsed.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IStringLocalizer<AccountController> localizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _localizer = localizer;
         }
 
         [TempData]
