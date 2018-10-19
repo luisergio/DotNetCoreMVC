@@ -124,7 +124,7 @@
     <value>Log in</value>
   </data>
   <data name="RegisterNewUser" xml:space="preserve">
-    <value>Register as a new user?</value>
+    <value>Register a new user</value>
   </data>
   <data name="UseAnotherServiceToLogIn" xml:space="preserve">
     <value>Use another service to log in.</value>

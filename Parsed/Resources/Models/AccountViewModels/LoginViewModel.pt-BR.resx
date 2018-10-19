@@ -117,19 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ForgotYourPassword?" xml:space="preserve">
-    <value>Esqueceu a sua senha?</value>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
   </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Login</value>
+  <data name="EmailInvalid" xml:space="preserve">
+    <value>O campo E-mail nÃ£o tem um endereÃ§o vÃ¡lido.</value>
   </data>
-  <data name="RegisterNewUser" xml:space="preserve">
-    <value>Criar um novo usuÃ¡rio</value>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>O campo E-mail Ã© obrigatÃ³rio.</value>
   </data>
-  <data name="UseAnotherServiceToLogIn" xml:space="preserve">
-    <value>Utilize outro serviÃ§o para logar.</value>
+  <data name="Password" xml:space="preserve">
+    <value>Senha</value>
   </data>
-  <data name="UseLocalAccount" xml:space="preserve">
-    <value>Utilize uma conta local para logar.</value>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>O campo Senha Ã© obrigatÃ³rio.</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Lembrar-me?</value>
   </data>
 </root>

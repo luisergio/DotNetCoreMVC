@@ -46,7 +46,8 @@ namespace Parsed
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc()
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
