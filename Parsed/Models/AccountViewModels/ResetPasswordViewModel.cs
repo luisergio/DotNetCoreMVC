@@ -8,8 +8,9 @@ namespace Parsed.Models.AccountViewModels
 {
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "EmailRequired")]
+        [EmailAddress(ErrorMessage = "EmailInvalid")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]

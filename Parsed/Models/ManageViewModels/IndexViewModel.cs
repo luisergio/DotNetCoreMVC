@@ -12,8 +12,9 @@ namespace Parsed.Models.ManageViewModels
 
         public bool IsEmailConfirmed { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "EmailRequired")]
+        [EmailAddress(ErrorMessage = "EmailInvalid")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Phone]

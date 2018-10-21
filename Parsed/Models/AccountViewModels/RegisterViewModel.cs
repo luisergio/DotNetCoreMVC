@@ -8,8 +8,8 @@ namespace Parsed.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "EmailRequired")]
+        [EmailAddress(ErrorMessage = "EmailInvalid")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
