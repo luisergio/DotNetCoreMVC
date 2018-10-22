@@ -1,11 +1,14 @@
-ï»¿@model LoginWith2faViewModel
+ï»¿@using Microsoft.AspNetCore.Mvc.Localization
+@model LoginWith2faViewModel
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Two-factor authentication";
+    ViewData["Title"] = Localizer["2fa"];
 }
 
 <h2>@ViewData["Title"]</h2>
 <hr />
-<p>Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+<p>@Localizer["2faDescription"]</p>
 <div class="row">
     <div class="col-md-4">
         <form method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]">
@@ -25,14 +28,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Log in</button>
+                <button type="submit" class="btn btn-default">@Localizer["LogIn"]</button>
             </div>
         </form>
     </div>
 </div>
 <p>
-    Don't have access to your authenticator device? You can 
-    <a asp-action="LoginWithRecoveryCode" asp-route-returnUrl="@ViewData["ReturnUrl"]">log in with a recovery code</a>.
+    @Localizer["DontHaveAccessToYour"]
+    <a asp-action="LoginWithRecoveryCode" asp-route-returnUrl="@ViewData["ReturnUrl"]">@Localizer["LogInWithRecoveryCode"]</a>.
 </p>
 
 @section Scripts {

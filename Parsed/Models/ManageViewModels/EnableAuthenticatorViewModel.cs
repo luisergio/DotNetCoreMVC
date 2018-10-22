@@ -10,10 +10,10 @@ namespace Parsed.Models.ManageViewModels
 {
     public class EnableAuthenticatorViewModel
     {
-            [Required]
-            [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "CodeRequired")]
+            [StringLength(7, ErrorMessage = "CodeLength", MinimumLength = 6)]
             [DataType(DataType.Text)]
-            [Display(Name = "Verification Code")]
+            [Display(Name = "Code")]
             public string Code { get; set; }
 
             [BindNever]

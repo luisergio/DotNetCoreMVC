@@ -8,18 +8,22 @@ namespace Parsed.Models.ManageViewModels
 {
     public class IndexViewModel
     {
+        [Display(Name = "Username")]
         public string Username { get; set; }
 
+        [Display(Name = "IsEmailConfirmed")]
         public bool IsEmailConfirmed { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "EmailRequired")]
+        [EmailAddress(ErrorMessage = "EmailInvalid")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Phone]
-        [Display(Name = "Phone number")]
+        [Display(Name = "PhoneNumber")]
         public string PhoneNumber { get; set; }
 
+        [Display(Name = "StatusMessage")]
         public string StatusMessage { get; set; }
     }
 }

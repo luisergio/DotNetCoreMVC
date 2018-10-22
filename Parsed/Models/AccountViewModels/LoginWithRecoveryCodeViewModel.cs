@@ -8,9 +8,9 @@ namespace Parsed.Models.AccountViewModels
 {
     public class LoginWithRecoveryCodeViewModel
     {
-            [Required]
+            [Required(ErrorMessage = "RecoveryCodeRequired")]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "RecoveryCode")]
             public string RecoveryCode { get; set; }
     }
 }

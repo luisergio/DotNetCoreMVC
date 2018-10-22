@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Parsed.Models;
@@ -20,6 +21,8 @@ namespace Parsed.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
+        private readonly IStringLocalizer<AccountController> _localizer;
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -29,12 +32,14 @@ namespace Parsed.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IStringLocalizer<AccountController> localizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _localizer = localizer;
         }
 
         [TempData]
@@ -78,7 +83,7 @@ namespace Parsed.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, _localizer["InvalidLoginAttempt"].Value);
                     return View(model);
                 }
             }
@@ -96,7 +101,7 @@ namespace Parsed.Controllers
 
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load two-factor authentication user.");
+                throw new ApplicationException(_localizer["UnableToLoad2FAUser"].Value);
             }
 
             var model = new LoginWith2faViewModel { RememberMe = rememberMe };
@@ -118,7 +123,7 @@ namespace Parsed.Controllers
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
             var authenticatorCode = model.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
@@ -138,7 +143,7 @@ namespace Parsed.Controllers
             else
             {
                 _logger.LogWarning("Invalid authenticator code entered for user with ID {UserId}.", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
+                ModelState.AddModelError(string.Empty, _localizer["InvalidAuthenticationCode"].Value);
                 return View();
             }
         }
@@ -151,7 +156,7 @@ namespace Parsed.Controllers
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load two-factor authentication user.");
+                throw new ApplicationException(_localizer["UnableToLoad2FAUser"].Value);
             }
 
             ViewData["ReturnUrl"] = returnUrl;
@@ -172,7 +177,7 @@ namespace Parsed.Controllers
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load two-factor authentication user.");
+                throw new ApplicationException(_localizer["UnableToLoad2FAUser"].Value);
             }
 
             var recoveryCode = model.RecoveryCode.Replace(" ", string.Empty);
@@ -192,7 +197,7 @@ namespace Parsed.Controllers
             else
             {
                 _logger.LogWarning("Invalid recovery code entered for user with ID {UserId}", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid recovery code entered.");
+                ModelState.AddModelError(string.Empty, _localizer["InvalidRecoveryCode"].Value);
                 return View();
             }
         }
@@ -267,7 +272,7 @@ namespace Parsed.Controllers
         {
             if (remoteError != null)
             {
-                ErrorMessage = $"Error from external provider: {remoteError}";
+                ErrorMessage = _localizer["ErrorFromExternalProvider", remoteError].Value;
                 return RedirectToAction(nameof(Login));
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
@@ -308,7 +313,7 @@ namespace Parsed.Controllers
                 var info = await _signInManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
-                    throw new ApplicationException("Error loading external login information during confirmation.");
+                    throw new ApplicationException(_localizer["ErrorLoadingExternalLoginInformation"].Value);
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
@@ -340,7 +345,7 @@ namespace Parsed.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+                throw new ApplicationException(_localizer["UnableToLoadUser", userId].Value);
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
@@ -371,8 +376,10 @@ namespace Parsed.Controllers
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                await _emailSender.SendEmailAsync(
+                    model.Email, 
+                    _localizer["ResetPasswordEmailTitle"].Value,
+                    _localizer["ResetPasswordEmailDescription", callbackUrl].Value);
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
 
@@ -393,7 +400,7 @@ namespace Parsed.Controllers
         {
             if (code == null)
             {
-                throw new ApplicationException("A code must be supplied for password reset.");
+                throw new ApplicationException(_localizer["CodeMustBeSupplied"].Value);
             }
             var model = new ResetPasswordViewModel { Code = code };
             return View(model);

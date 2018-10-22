@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Parsed.Data;
 using Parsed.Models;
 using Parsed.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Parsed
 {
@@ -26,6 +29,12 @@ namespace Parsed
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region ConfiguraÃ§Ãµes para definiÃ§Ã£o de Resources
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            #endregion
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -36,12 +45,34 @@ namespace Parsed
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            #region ConfiguraÃ§Ãµes para trabalhar com mÃºltiplas linguas
+
+            var supportedCultures = new List<CultureInfo>
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("pt-BR")
+            };
+
+            var options = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+
+            };
+
+            app.UseRequestLocalization(options);
+
+            #endregion
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
