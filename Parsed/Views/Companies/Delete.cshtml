@@ -1,0 +1,42 @@
+ï»¿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model Parsed.Models.Company
+
+@{
+    ViewData["Title"] = Localizer["Delete"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>@Localizer["YouWantToDelete"]</h3>
+<div>
+    <h4>@Localizer["Company"]</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DigitalCertificate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DigitalCertificate)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-default" /> |
+        <a asp-action="Index">@Localizer["BackToList"]</a>
+    </form>
+</div>

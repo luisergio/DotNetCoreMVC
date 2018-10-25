@@ -48,6 +48,9 @@ namespace Parsed
             services.AddMvc()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
+
+            services.AddDbContext<CompanyContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CompanyContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

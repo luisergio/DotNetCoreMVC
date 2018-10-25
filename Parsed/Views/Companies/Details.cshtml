@@ -1,0 +1,39 @@
+ï»¿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model Parsed.Models.Company
+
+@{
+    ViewData["Title"] = Localizer["Details"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>@Localizer["Company"]</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DigitalCertificate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DigitalCertificate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">@ViewData["Edit"]</a> |
+    <a asp-action="Index">@ViewData["BackToList"]</a>
+</div>
