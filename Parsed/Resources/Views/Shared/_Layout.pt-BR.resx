@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -133,6 +133,6 @@
     <value>Home</value>
   </data>
   <data name="ToggleNavigation" xml:space="preserve">
-    <value>Alternar navegaÃ§Ã£o</value>
+    <value>Alternar navegação</value>
   </data>
 </root>

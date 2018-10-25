@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnErrorOccurred" xml:space="preserve">
-    <value>Um erro ocorreu enquanto processava a sua requisiÃ§Ã£o</value>
+    <value>Um erro ocorreu enquanto processava a sua requisição</value>
   </data>
   <data name="DevelopmentMode" xml:space="preserve">
     <value>Modo de Desenvolvimento</value>
   </data>
   <data name="DevelopmentModeDesc1" xml:space="preserve">
-    <value>Trocando para o ambiente &lt;strong&gt; Desenvolvimento &lt;/ strong&gt; exibirÃ¡ informaÃ§Ãµes mais detalhadas sobre o erro ocorrido.</value>
+    <value>Trocando para o ambiente &lt;strong&gt; Desenvolvimento &lt;/ strong&gt; exibirá informações mais detalhadas sobre o erro ocorrido.</value>
   </data>
   <data name="DevelopmentModeDesc2" xml:space="preserve">
-    <value>&lt;strong&gt; O ambiente de desenvolvimento nÃ£o deve ser ativado em aplicativos implementados &lt;/ strong&gt;, pois pode resultar em informaÃ§Ãµes confidenciais de exceÃ§Ãµes exibidas aos usuÃ¡rios finais. Para depuraÃ§Ã£o local, o ambiente de desenvolvimento pode ser ativado configurando a variÃ¡vel de ambiente &lt;strong&gt; ASPNETCORE_ENVIRONMENT &lt;/ strong&gt; para &lt;strong&gt; Desenvolvimento &lt;/ strong&gt; e reiniciando o aplicativo.</value>
+    <value>&lt;strong&gt; O ambiente de desenvolvimento não deve ser ativado em aplicativos implementados &lt;/ strong&gt;, pois pode resultar em informações confidenciais de exceções exibidas aos usuários finais. Para depuração local, o ambiente de desenvolvimento pode ser ativado configurando a variável de ambiente &lt;strong&gt; ASPNETCORE_ENVIRONMENT &lt;/ strong&gt; para &lt;strong&gt; Desenvolvimento &lt;/ strong&gt; e reiniciando o aplicativo.</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erro</value>

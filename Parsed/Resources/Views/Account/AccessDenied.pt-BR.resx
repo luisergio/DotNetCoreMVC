@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,6 +121,6 @@
     <value>Acesso Negado</value>
   </data>
   <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>VocÃª nÃ£o tem acesso a essa funcionalidade.</value>
+    <value>Você não tem acesso a essa funcionalidade.</value>
   </data>
 </root>

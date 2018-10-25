@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -124,6 +124,6 @@
     <value>Cadastrar</value>
   </data>
   <data name="RegisterMessage" xml:space="preserve">
-    <value>VocÃª autenticou com sucesso com &lt;strong&gt;{0}&lt;/strong&gt;. &lt;/br&gt; Por favor, insira um endereÃ§o de e-mail para este site abaixo e clique no botÃ£o Registrar para finalizar &lt;/br&gt; fazendo login.</value>
+    <value>Você autenticou com sucesso com &lt;strong&gt;{0}&lt;/strong&gt;. &lt;/br&gt; Por favor, insira um endereço de e-mail para este site abaixo e clique no botão Registrar para finalizar &lt;/br&gt; fazendo login.</value>
   </data>
 </root>

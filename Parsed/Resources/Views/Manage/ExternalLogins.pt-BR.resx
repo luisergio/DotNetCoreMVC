@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddAnotherService" xml:space="preserve">
-    <value>Adicionar outro serviÃ§o para logar.</value>
+    <value>Adicionar outro serviço para logar.</value>
   </data>
   <data name="LoginUsingYourAccount" xml:space="preserve">
     <value>Logue com {0}</value>

@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="0CodesLeft" xml:space="preserve">
-    <value>VocÃª nÃ£o tem mais cÃ³digos de recuperaÃ§Ã£o.</value>
+    <value>Você não tem mais códigos de recuperação.</value>
   </data>
   <data name="0CodesLeftDescription" xml:space="preserve">
-    <value>VocÃª deve &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de cÃ³digos de recuperaÃ§Ã£o&lt;/a&gt; antes de efetuar login com um cÃ³digo de recuperaÃ§Ã£o.</value>
+    <value>Você deve &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de códigos de recuperação&lt;/a&gt; antes de efetuar login com um código de recuperação.</value>
   </data>
   <data name="1CodesLeft" xml:space="preserve">
-    <value>VocÃª tem somente um cÃ³digo de recuperaÃ§Ã£o.</value>
+    <value>Você tem somente um código de recuperação.</value>
   </data>
   <data name="1CodesLeftDescription" xml:space="preserve">
-    <value>VocÃª pode &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de cÃ³digos de recuperaÃ§Ã£o&lt;/a&gt; antes de efetuar login com um cÃ³digo de recuperaÃ§Ã£o.</value>
+    <value>Você pode &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de códigos de recuperação&lt;/a&gt; antes de efetuar login com um código de recuperação.</value>
   </data>
   <data name="2FA" xml:space="preserve">
-    <value>AutenticaÃ§Ã£o de dois fatores</value>
+    <value>Autenticação de dois fatores</value>
   </data>
   <data name="AddAuthenticatorApp" xml:space="preserve">
     <value>Adicionar aplicativo autenticador</value>
@@ -139,10 +139,10 @@
     <value>Aplicativo autenticador</value>
   </data>
   <data name="CodesLeft" xml:space="preserve">
-    <value>VocÃª tem {0} cÃ³digos de recuperaÃ§Ã£o sobrando.</value>
+    <value>Você tem {0} códigos de recuperação sobrando.</value>
   </data>
   <data name="CodesLeftDescription" xml:space="preserve">
-    <value>VocÃª pode &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de cÃ³digos de recuperaÃ§Ã£o&lt;/a&gt;.</value>
+    <value>Você pode &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de códigos de recuperação&lt;/a&gt;.</value>
   </data>
   <data name="ConfigureAuthenticatorApp" xml:space="preserve">
     <value>Configurar aplicativo autenticador</value>
@@ -154,6 +154,6 @@
     <value>Redefinir chave do autenticador</value>
   </data>
   <data name="ResetRecoveryCodes" xml:space="preserve">
-    <value>Redefinir cÃ³digos de recuperaÃ§Ã£o</value>
+    <value>Redefinir códigos de recuperação</value>
   </data>
 </root>

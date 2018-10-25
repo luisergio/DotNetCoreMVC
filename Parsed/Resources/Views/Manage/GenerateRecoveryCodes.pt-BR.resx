@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="2faRecoveryCodeDescription1" xml:space="preserve">
-    <value>Esta aÃ§Ã£o gera novos cÃ³digos de recuperaÃ§Ã£o.</value>
+    <value>Esta ação gera novos códigos de recuperação.</value>
   </data>
   <data name="2faRecoveryCodeDescription2" xml:space="preserve">
-    <value>Se vocÃª perder seu dispositivo e nÃ£o tiver os cÃ³digos de recuperaÃ§Ã£o, perderÃ¡ o acesso Ã  sua conta.</value>
+    <value>Se você perder seu dispositivo e não tiver os códigos de recuperação, perderá o acesso Ã  sua conta.</value>
   </data>
   <data name="2faRecoveryCodeDescription3" xml:space="preserve">
-    <value>A geraÃ§Ã£o de novos cÃ³digos de recuperaÃ§Ã£o nÃ£o altera as chaves usadas nos aplicativos do autenticador. Se vocÃª deseja mudar a chave
-Â Â Â Â Â Â Â Â  usado em um aplicativo autenticador, vocÃª deve &lt;a asp-action="ResetAuthenticatorWarning"&gt; redefinir as chaves do autenticador. &lt;/a&gt;</value>
+    <value>A geração de novos códigos de recuperação não altera as chaves usadas nos aplicativos do autenticador. Se você deseja mudar a chave
+Â Â Â Â Â Â Â Â  usado em um aplicativo autenticador, você deve &lt;a asp-action="ResetAuthenticatorWarning"&gt; redefinir as chaves do autenticador. &lt;/a&gt;</value>
   </data>
   <data name="Generate2faRecoveryCode" xml:space="preserve">
-    <value>Gerar cÃ³digos de recuperaÃ§Ã£o de autenticaÃ§Ã£o de dois fatores</value>
+    <value>Gerar códigos de recuperação de autenticação de dois fatores</value>
   </data>
   <data name="GenerateRecoveryCodes" xml:space="preserve">
-    <value>Gerar CÃ³digos de RecuperaÃ§Ã£o</value>
+    <value>Gerar Códigos de Recuperação</value>
   </data>
 </root>

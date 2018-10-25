@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CNPJRequired" xml:space="preserve">
-    <value>O campo CNPJ Ã© obrigatÃ³rio.</value>
+    <value>O campo CNPJ é obrigatório.</value>
   </data>
   <data name="DigitalCertificate" xml:space="preserve">
     <value>Certificado Digital</value>
@@ -127,9 +127,9 @@
     <value>Nome</value>
   </data>
   <data name="TitleRequired" xml:space="preserve">
-    <value>O campo Nome Ã© obrigatÃ³rio.</value>
+    <value>O campo Nome é obrigatório.</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>UsuÃ¡rios</value>
+    <value>Usuários</value>
   </data>
 </root>

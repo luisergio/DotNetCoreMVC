@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -124,6 +124,6 @@
     <value>Salvar</value>
   </data>
   <data name="SendVerificationEmail" xml:space="preserve">
-    <value>Enviar e-mail de verificaÃ§Ã£o</value>
+    <value>Enviar e-mail de verificação</value>
   </data>
 </root>

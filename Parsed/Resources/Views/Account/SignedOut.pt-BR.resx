@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,6 +121,6 @@
     <value>Desconectado</value>
   </data>
   <data name="YouHaveSignedOut" xml:space="preserve">
-    <value>VocÃª foi desconectado com sucesso.</value>
+    <value>Você foi desconectado com sucesso.</value>
   </data>
 </root>

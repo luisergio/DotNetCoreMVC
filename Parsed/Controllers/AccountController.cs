@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -442,6 +442,16 @@ namespace Parsed.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [HttpGet("{language}")]
+        [AllowAnonymous]
+        public ActionResult SetLanguage(string language)
+        {
+            string CookiesValue = "c="+ language + "|uic=" + language;
+            Response.Cookies.Append(".AspNetCore.Culture", CookiesValue);
+
+            return new EmptyResult();
         }
 
         #region Helpers

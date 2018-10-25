@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RecoveryCodes" xml:space="preserve">
-    <value>CÃ³digos de RecuperaÃ§Ã£o</value>
+    <value>Códigos de Recuperação</value>
   </data>
   <data name="RecoveryCodesDescription1" xml:space="preserve">
-    <value>Guarde esses cÃ³digos em um local seguro.</value>
+    <value>Guarde esses códigos em um local seguro.</value>
   </data>
   <data name="RecoveryCodesDescription2" xml:space="preserve">
-    <value>Se vocÃª perder seu dispositivo, e nÃ£o tiver um cÃ³digo de recuperaÃ§Ã£o, vocÃª perderÃ¡ acesso a sua conta.</value>
+    <value>Se você perder seu dispositivo, e não tiver um código de recuperação, você perderá acesso a sua conta.</value>
   </data>
 </root>

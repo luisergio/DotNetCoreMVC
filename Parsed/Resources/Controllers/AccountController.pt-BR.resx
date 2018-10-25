@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CodeMustBeSupplied" xml:space="preserve">
-    <value>O cÃ³digo deve ser fornecido para redefiniÃ§Ã£o de senha.</value>
+    <value>O código deve ser fornecido para redefinição de senha.</value>
   </data>
   <data name="ErrorFromExternalProvider" xml:space="preserve">
     <value>Erro no provedor externo: {0}</value>
   </data>
   <data name="ErrorLoadingExternalLoginInformation" xml:space="preserve">
-    <value>Erro ao carregar informaÃ§Ãµes de login externas durante a confirmaÃ§Ã£o.</value>
+    <value>Erro ao carregar informações de login externas durante a confirmação.</value>
   </data>
   <data name="InvalidAuthenticationCode" xml:space="preserve">
-    <value>CÃ³digo do autenticador invÃ¡lido.</value>
+    <value>Código do autenticador inválido.</value>
   </data>
   <data name="InvalidLoginAttempt" xml:space="preserve">
-    <value>Tentativa de login invÃ¡lida.</value>
+    <value>Tentativa de login inválida.</value>
   </data>
   <data name="InvalidRecoveryCode" xml:space="preserve">
-    <value>CÃ³digo de recuperaÃ§Ã£o invÃ¡lido.</value>
+    <value>Código de recuperação inválido.</value>
   </data>
   <data name="ResetPasswordEmailDescription" xml:space="preserve">
     <value>Por favor, redefina sua senha clicando aqui: &lt;a href='{0}'&gt; link &lt;/a&gt;</value>
@@ -142,9 +142,9 @@
     <value>Redefinir Senha</value>
   </data>
   <data name="UnableToLoad2FAUser" xml:space="preserve">
-    <value>NÃ£o Ã© possÃ­vel carregar o usuÃ¡rio de autenticaÃ§Ã£o de dois fatores.</value>
+    <value>Não é possÃ­vel carregar o usuário de autenticação de dois fatores.</value>
   </data>
   <data name="UnableToLoadUser" xml:space="preserve">
-    <value>NÃ£o Ã© possÃ­vel carregar o usuÃ¡rio com o ID '{0}'.</value>
+    <value>Não é possÃ­vel carregar o usuário com o ID '{0}'.</value>
   </data>
 </root>

@@ -127,7 +127,7 @@ $.validator.addMethod("bic", function(value, element) {
 }, "Please specify a valid BIC code");
 
 /*
- * CÃ³digo de identificaciÃ³n fiscal ( CIF ) is the tax identification code for Spanish legal entities
+ * Código de identificación fiscal ( CIF ) is the tax identification code for Spanish legal entities
  * Further rules can be found in Spanish on http://es.wikipedia.org/wiki/C%C3%B3digo_de_identificaci%C3%B3n_fiscal
  */
 $.validator.addMethod( "cifES", function( value ) {
@@ -616,7 +616,7 @@ $.validator.addMethod( "nieES", function( value ) {
 }, "Please specify a valid NIE number." );
 
 /*
- * The NÃºmero de IdentificaciÃ³n Fiscal ( NIF ) is the way tax identification used in Spain for individuals
+ * The NÃºmero de Identificación Fiscal ( NIF ) is the way tax identification used in Spain for individuals
  */
 $.validator.addMethod( "nifES", function( value ) {
 	"use strict";
@@ -757,7 +757,7 @@ $.validator.addMethod( "postalCodeCA", function( value, element ) {
 */
 $.validator.addMethod("postalcodeBR", function(cep_value, element) {
 	return this.optional(element) || /^\d{2}.\d{3}-\d{3}?$|^\d{5}-?\d{3}?$/.test( cep_value );
-}, "Informe um CEP vÃ¡lido.");
+}, "Informe um CEP válido.");
 
 /* Matches Italian postcode (CAP) */
 $.validator.addMethod("postalcodeIT", function(value, element) {

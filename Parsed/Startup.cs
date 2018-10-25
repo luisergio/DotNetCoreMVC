@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +29,7 @@ namespace Parsed
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            #region ConfiguraÃ§Ãµes para definiÃ§Ã£o de Resources
+            #region Configurações para definição de Resources
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
@@ -56,12 +56,12 @@ namespace Parsed
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            #region ConfiguraÃ§Ãµes para trabalhar com mÃºltiplas linguas
+            #region Configurações para trabalhar com mÃºltiplas linguas
 
             var supportedCultures = new List<CultureInfo>
             {
-                new CultureInfo("en-US"),
-                new CultureInfo("pt-BR")
+                new CultureInfo("pt-BR"),
+                new CultureInfo("en-US")
             };
 
             var options = new RequestLocalizationOptions

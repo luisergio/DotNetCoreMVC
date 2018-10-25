@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="2fa" xml:space="preserve">
-    <value>AutenticaÃ§Ã£o de dois fatores</value>
+    <value>Autenticação de dois fatores</value>
   </data>
   <data name="2faDescription" xml:space="preserve">
-    <value>Seu login Ã© protegido por um aplicativo autenticador. Digite seu cÃ³digo de autenticador abaixo.</value>
+    <value>Seu login é protegido por um aplicativo autenticador. Digite seu código de autenticador abaixo.</value>
   </data>
   <data name="DontHaveAccessToYour" xml:space="preserve">
-    <value>NÃ£o tem acesso ao seu dispositivo autenticador? VocÃª pode</value>
+    <value>Não tem acesso ao seu dispositivo autenticador? Você pode</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="LogInWithRecoveryCode" xml:space="preserve">
-    <value>Logar com um cÃ³digo de recuperaÃ§Ã£o</value>
+    <value>Logar com um código de recuperação</value>
   </data>
 </root>

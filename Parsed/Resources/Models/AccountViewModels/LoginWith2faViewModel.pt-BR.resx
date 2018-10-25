@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AuthenticatorCode" xml:space="preserve">
-    <value>CÃ³digo Autenticador</value>
+    <value>Código Autenticador</value>
   </data>
   <data name="AuthenticatorCodeLength" xml:space="preserve">
-    <value>O campo {0} deve ter no mÃ­nimo {2} e no mÃ¡ximo {1} caracteres.</value>
+    <value>O campo {0} deve ter no mÃ­nimo {2} e no máximo {1} caracteres.</value>
   </data>
   <data name="AuthenticatorCodeRequired" xml:space="preserve">
-    <value>O campo CÃ³digo Autenticador Ã© obrigatÃ³rio.</value>
+    <value>O campo Código Autenticador é obrigatório.</value>
   </data>
   <data name="RememberMachine" xml:space="preserve">
-    <value>Lembrar da mÃ¡quina</value>
+    <value>Lembrar da máquina</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Lembrar-me?</value>

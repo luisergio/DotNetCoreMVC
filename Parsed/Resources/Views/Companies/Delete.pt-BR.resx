@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -127,6 +127,6 @@
     <value>Deletar</value>
   </data>
   <data name="YouWantToDelete" xml:space="preserve">
-    <value>VocÃª tem certeza que deseja deletar?</value>
+    <value>Você tem certeza que deseja deletar?</value>
   </data>
 </root>
