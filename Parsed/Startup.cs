@@ -66,7 +66,7 @@ namespace Parsed
 
             var options = new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("en-US"),
+                DefaultRequestCulture = new RequestCulture("pt-BR"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
 

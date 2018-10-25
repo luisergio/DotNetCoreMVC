@@ -21,6 +21,7 @@ namespace Parsed.Models
         [Display(Name = "DigitalCertificate")]
         public byte[] DigitalCertificate { get; set; }
 
+        [Display(Name = "Users")]
         public List<ApplicationUser> Users { get; set; }
     }
 }

@@ -33,3 +33,14 @@
         display: none;
     }
 }
+
+
+a svg:hover #language {
+    fill: #FFF;
+}
+
+
+.dropdown-toggle-image {
+    height: 50px;
+    top:-2px;
+}
