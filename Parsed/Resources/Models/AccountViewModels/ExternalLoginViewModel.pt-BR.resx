@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="EmailInvalid" xml:space="preserve">
+    <value>O campo E-mail deve ter um endereÃ§o de e-mail vÃ¡lido.</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>O campo E-mail Ã© obrigatÃ³rio.</value>
   </data>
 </root>

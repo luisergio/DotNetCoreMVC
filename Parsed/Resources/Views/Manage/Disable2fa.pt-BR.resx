@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="Disable2FA" xml:space="preserve">
+    <value>Desabilitar dois fatores de autenticaÃ§Ã£o</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="Disable2FAButton" xml:space="preserve">
+    <value>Desabilitar</value>
+  </data>
+  <data name="Disable2FADescription" xml:space="preserve">
+    <value>Desativando o segundo fator de autenticaÃ§Ã£o nÃ£o se altera as chaves usadas nos aplicativos do autenticador. Se vocÃª quiser alterar a chave usada em um aplicativo autenticador, deverÃ¡ &lt;a asp-action="ResetAuthenticatorWarning"&gt; redefinir as chaves do autenticador&lt;/a&gt;.</value>
+  </data>
+  <data name="ThisOnlyDisables2FA" xml:space="preserve">
+    <value>Esta aÃ§Ã£o somente desativa o segundo fator de autenticaÃ§Ã£o.</value>
   </data>
 </root>

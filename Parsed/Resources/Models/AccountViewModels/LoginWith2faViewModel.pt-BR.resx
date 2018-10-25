@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="AuthenticatorCode" xml:space="preserve">
+    <value>CÃ³digo Autenticador</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="AuthenticatorCodeLength" xml:space="preserve">
+    <value>O campo {0} deve ter no mÃ­nimo {2} e no mÃ¡ximo {1} caracteres.</value>
+  </data>
+  <data name="AuthenticatorCodeRequired" xml:space="preserve">
+    <value>O campo CÃ³digo Autenticador Ã© obrigatÃ³rio.</value>
+  </data>
+  <data name="RememberMachine" xml:space="preserve">
+    <value>Lembrar da mÃ¡quina</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Lembrar-me?</value>
   </data>
 </root>

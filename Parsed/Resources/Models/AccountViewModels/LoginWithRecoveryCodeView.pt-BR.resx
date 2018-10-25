@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="RecoveryCode" xml:space="preserve">
+    <value>CÃ³digo de RecuperaÃ§Ã£o</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="RecoveryCodeRequired" xml:space="preserve">
+    <value>O campo CÃ³digo de RecuperaÃ§Ã£o Ã© obrigatÃ³rio.</value>
   </data>
 </root>

@@ -117,10 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="0CodesLeft" xml:space="preserve">
+    <value>VocÃª nÃ£o tem mais cÃ³digos de recuperaÃ§Ã£o.</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="0CodesLeftDescription" xml:space="preserve">
+    <value>VocÃª deve &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de cÃ³digos de recuperaÃ§Ã£o&lt;/a&gt; antes de efetuar login com um cÃ³digo de recuperaÃ§Ã£o.</value>
+  </data>
+  <data name="1CodesLeft" xml:space="preserve">
+    <value>VocÃª tem somente um cÃ³digo de recuperaÃ§Ã£o.</value>
+  </data>
+  <data name="1CodesLeftDescription" xml:space="preserve">
+    <value>VocÃª pode &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de cÃ³digos de recuperaÃ§Ã£o&lt;/a&gt; antes de efetuar login com um cÃ³digo de recuperaÃ§Ã£o.</value>
+  </data>
+  <data name="2FA" xml:space="preserve">
+    <value>AutenticaÃ§Ã£o de dois fatores</value>
+  </data>
+  <data name="AddAuthenticatorApp" xml:space="preserve">
+    <value>Adicionar aplicativo autenticador</value>
+  </data>
+  <data name="AuthenticatorApp" xml:space="preserve">
+    <value>Aplicativo autenticador</value>
+  </data>
+  <data name="CodesLeft" xml:space="preserve">
+    <value>VocÃª tem {0} cÃ³digos de recuperaÃ§Ã£o sobrando.</value>
+  </data>
+  <data name="CodesLeftDescription" xml:space="preserve">
+    <value>VocÃª pode &lt;a asp-action="GenerateRecoveryCodes"&gt;gerar um novo conjunto de cÃ³digos de recuperaÃ§Ã£o&lt;/a&gt;.</value>
+  </data>
+  <data name="ConfigureAuthenticatorApp" xml:space="preserve">
+    <value>Configurar aplicativo autenticador</value>
+  </data>
+  <data name="Disable2FA" xml:space="preserve">
+    <value>Desabilitar</value>
+  </data>
+  <data name="ResetAuthenticatorKey" xml:space="preserve">
+    <value>Redefinir chave do autenticador</value>
+  </data>
+  <data name="ResetRecoveryCodes" xml:space="preserve">
+    <value>Redefinir cÃ³digos de recuperaÃ§Ã£o</value>
   </data>
 </root>

@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="RAKDescription1" xml:space="preserve">
+    <value>Se vocÃª redefinir sua chave do autenticador, seu aplicativo autenticador nÃ£o funcionarÃ¡ atÃ© vocÃª reconfigurÃ¡-lo.</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="RAKDescription2" xml:space="preserve">
+    <value>Esse processo desativa o processo de dois fatores de autenticaÃ§Ã£o atÃ© vocÃª confirmar seu aplicativo autenticador e tambÃ©m redefinirÃ¡ seus cÃ³digos de recuperaÃ§Ã£o. Se vocÃª nÃ£o concluir a configuraÃ§Ã£o do aplicativo autenticador, poderÃ¡ perder o acesso Ã  sua conta.</value>
+  </data>
+  <data name="ResetAuthenticatorKey" xml:space="preserve">
+    <value>Redefinir chave do autenticador</value>
   </data>
 </root>

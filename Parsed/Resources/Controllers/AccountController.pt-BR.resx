@@ -117,10 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="CodeMustBeSupplied" xml:space="preserve">
+    <value>O cÃ³digo deve ser fornecido para redefiniÃ§Ã£o de senha.</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="ErrorFromExternalProvider" xml:space="preserve">
+    <value>Erro no provedor externo: {0}</value>
+  </data>
+  <data name="ErrorLoadingExternalLoginInformation" xml:space="preserve">
+    <value>Erro ao carregar informaÃ§Ãµes de login externas durante a confirmaÃ§Ã£o.</value>
+  </data>
+  <data name="InvalidAuthenticationCode" xml:space="preserve">
+    <value>CÃ³digo do autenticador invÃ¡lido.</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Tentativa de login invÃ¡lida.</value>
+  </data>
+  <data name="InvalidRecoveryCode" xml:space="preserve">
+    <value>CÃ³digo de recuperaÃ§Ã£o invÃ¡lido.</value>
+  </data>
+  <data name="ResetPasswordEmailDescription" xml:space="preserve">
+    <value>Por favor, redefina sua senha clicando aqui: &lt;a href='{0}'&gt; link &lt;/a&gt;</value>
+  </data>
+  <data name="ResetPasswordEmailTitle" xml:space="preserve">
+    <value>Redefinir Senha</value>
+  </data>
+  <data name="UnableToLoad2FAUser" xml:space="preserve">
+    <value>NÃ£o Ã© possÃ­vel carregar o usuÃ¡rio de autenticaÃ§Ã£o de dois fatores.</value>
+  </data>
+  <data name="UnableToLoadUser" xml:space="preserve">
+    <value>NÃ£o Ã© possÃ­vel carregar o usuÃ¡rio com o ID '{0}'.</value>
   </data>
 </root>

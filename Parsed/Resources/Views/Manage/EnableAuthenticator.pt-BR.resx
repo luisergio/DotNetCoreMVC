@@ -117,10 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="Enable2faStep1" xml:space="preserve">
+    <value>FaÃ§a o download de um aplicativo de autenticaÃ§Ã£o de dois fatores como o Microsoft Authenticator para
+&lt;a href="https://go.microsoft.com/fwlink/?Linkid=825071"&gt; Windows Phone &lt;/a&gt;,
+&lt;a href="https://go.microsoft.com/fwlink/?Linkid=825072"&gt; Android &lt;/a&gt; e
+&lt;a href="https://go.microsoft.com/fwlink/?Linkid=825073"&gt; iOS &lt;/a&gt; ou
+Google Authenticator para
+&lt;a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;amp;hl=pt_BR"&gt; Android &lt;/a&gt; e
+&lt;a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8"&gt; iOS &lt;/a&gt;.</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="Enable2faStep2" xml:space="preserve">
+    <value>Escaneie o QR Code ou insira essa chave &lt;kbd&gt; {0} &lt;/ kbd&gt; em seu aplicativo autenticador de dois fatores. EspaÃ§os e revestimento nÃ£o importam.</value>
+  </data>
+  <data name="Enable2faStep3" xml:space="preserve">
+    <value>Para ativar a geraÃ§Ã£o de cÃ³digos QR, leia nossa &lt;a href="https://go.microsoft.com/fwlink/?Linkid=852423"&gt; documentaÃ§Ã£o &lt;/a&gt;.</value>
+  </data>
+  <data name="Enable2faStep4" xml:space="preserve">
+    <value>Depois de digitalizar o cÃ³digo QR ou inserir a chave acima, seu aplicativo de autenticaÃ§Ã£o de dois fatores fornecerÃ¡ um cÃ³digo exclusivo. Digite o cÃ³digo na caixa de confirmaÃ§Ã£o abaixo.</value>
+  </data>
+  <data name="EnableAuthenticatorDescription" xml:space="preserve">
+    <value>Para usar um aplicativo autenticador, siga as etapas abaixo:</value>
+  </data>
+  <data name="EnableAuthenticatorTitle" xml:space="preserve">
+    <value>Ativar autenticador</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verificar</value>
   </data>
 </root>

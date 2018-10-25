@@ -117,10 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="CannotGenerateRecoveryCodes" xml:space="preserve">
+    <value>NÃ£o Ã© possÃ­vel gerar cÃ³digos de recuperaÃ§Ã£o para o usuÃ¡rio com o ID '{0}' porque eles nÃ£o tÃªm autenticaÃ§Ã£o de dois fatores ativado.</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="ErrorAddingExternalLoginInfo" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao adicionar login externo para o usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorDisabling2FA" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao desativar a atenticaÃ§Ã£o de dois fatores para o usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorLoadingExternalLoginInfo" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao carregar informaÃ§Ãµes de login externas para o usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorRemovingExternalLogin" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao remover o login externo do usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorSettingEmail" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao configurar o email para o usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorSettingPhone" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao configurar o nÃºmero de telefone do usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="ExternalLoginAdded" xml:space="preserve">
+    <value>O login externo foi adicionado.</value>
+  </data>
+  <data name="ExternalLoginRemoved" xml:space="preserve">
+    <value>O login externo foi removido.</value>
+  </data>
+  <data name="PasswordHasBenChanged" xml:space="preserve">
+    <value>Sua senha foi alterada.</value>
+  </data>
+  <data name="PasswordHasBenSet" xml:space="preserve">
+    <value>Sua senha foi definida.</value>
+  </data>
+  <data name="ProfileUpdated" xml:space="preserve">
+    <value>Seu perfil foi atualizado</value>
+  </data>
+  <data name="UnableToLoadUser" xml:space="preserve">
+    <value>NÃ£o Ã© possÃ­vel carregar o usuÃ¡rio com o ID '{0}'.</value>
+  </data>
+  <data name="VerificationCodeInvalid" xml:space="preserve">
+    <value>O cÃ³digo de verificaÃ§Ã£o Ã© invÃ¡lido.</value>
+  </data>
+  <data name="VerificationEmailSent" xml:space="preserve">
+    <value>E-mail de verificaÃ§Ã£o enviado. Por favor verifique seu e-mail.</value>
   </data>
 </root>

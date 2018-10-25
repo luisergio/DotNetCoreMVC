@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access Denied</value>
+  <data name="2fa" xml:space="preserve">
+    <value>AutenticaÃ§Ã£o de dois fatores</value>
   </data>
-  <data name="YouDoNotHaveAccess" xml:space="preserve">
-    <value>You do not have access to this feature.</value>
+  <data name="2faDescription" xml:space="preserve">
+    <value>Seu login Ã© protegido por um aplicativo autenticador. Digite seu cÃ³digo de autenticador abaixo.</value>
+  </data>
+  <data name="DontHaveAccessToYour" xml:space="preserve">
+    <value>NÃ£o tem acesso ao seu dispositivo autenticador? VocÃª pode</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogInWithRecoveryCode" xml:space="preserve">
+    <value>Logar com um cÃ³digo de recuperaÃ§Ã£o</value>
   </data>
 </root>
