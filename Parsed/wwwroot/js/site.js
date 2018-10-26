@@ -1,16 +1,16 @@
-// Write your JavaScript code.
 
+$(document).ready(function () {
 
-$(".SetLanguage").click(function (e) {
-
-    e.preventDefault();
-    $.ajax({
-
-        url: $(this).attr("href"), // comma here instead of semicolon   
-        success: function () {
-            alert("Value Added");  // or any other indication if you want to show
-        }
-
+    //Lógica para troca da lingua selecionada
+    $(".SetLanguage").click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr("href"), 
+            success: function () {
+                console.log("Language setted!");
+                document.location.reload();
+            }
+        });
     });
 
 });
