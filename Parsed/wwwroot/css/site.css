@@ -53,23 +53,17 @@ a svg:hover #language {
     top:-2px;
 }
 
-
-.navbar-inverse .navbar-brand {
-    color: #00C1C4;
+#Logout {
+    padding-right: 25px;
 }
 
-.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-    color: #FFF;
+.navbar-brand {
+    top: -10px;
+    position: relative;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: #007D77;
-    background-color: transparent;
-}
-
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-    color: #FFF;
-    background-color: transparent;
+.navbar-brand img {
+    height:40px
 }
 
 

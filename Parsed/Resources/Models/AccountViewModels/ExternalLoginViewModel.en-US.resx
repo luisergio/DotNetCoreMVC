@@ -126,4 +126,10 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>The Email field is required.</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>The Name field is required.</value>
+  </data>
 </root>

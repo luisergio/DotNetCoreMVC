@@ -144,4 +144,10 @@
   <data name="PasswordTypeValidation" xml:space="preserve">
     <value>The Password field does not have a valid password.</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>The Name field is required.</value>
+  </data>
 </root>

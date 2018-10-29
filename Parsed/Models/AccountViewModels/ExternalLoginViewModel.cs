@@ -8,6 +8,10 @@ namespace Parsed.Models.AccountViewModels
 {
     public class ExternalLoginViewModel
     {
+        [Required(ErrorMessage = "UserNameRequired")]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
         [Required(ErrorMessage = "EmailRequired")]
         [EmailAddress(ErrorMessage = "EmailInvalid")]
         [Display(Name = "Email")]

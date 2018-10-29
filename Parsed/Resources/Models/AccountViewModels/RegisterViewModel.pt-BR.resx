@@ -136,12 +136,18 @@
     <value>Senha</value>
   </data>
   <data name="PasswordLength" xml:space="preserve">
-    <value>O campo {0} deve ter no mÃ­nimo {2} e no máximo {1} caracteres.</value>
+    <value>O campo {0} deve ter no mánimo {2} e no máximo {1} caracteres.</value>
   </data>
   <data name="PasswordRequired" xml:space="preserve">
     <value>O campo Senha é obrigatório.</value>
   </data>
   <data name="PasswordTypeValidation" xml:space="preserve">
     <value>O campo Senha deve ter um valor válido.</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>O campo Nome é obrigatório.</value>
   </data>
 </root>

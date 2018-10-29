@@ -130,7 +130,7 @@
     <value>Código do autenticador inválido.</value>
   </data>
   <data name="InvalidLoginAttempt" xml:space="preserve">
-    <value>Tentativa de login inválida.</value>
+    <value>Login e/ou senha inválida.</value>
   </data>
   <data name="InvalidRecoveryCode" xml:space="preserve">
     <value>Código de recuperação inválido.</value>
