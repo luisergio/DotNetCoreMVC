@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
@@ -21,7 +22,8 @@ namespace Parsed.Models
         [Display(Name = "DigitalCertificate")]
         public byte[] DigitalCertificate { get; set; }
 
+        [NotMapped]
         [Display(Name = "Users")]
-        public List<ApplicationUser> Users { get; set; }
+        public virtual IList<ApplicationUser> Users { get; set; }
     }
 }

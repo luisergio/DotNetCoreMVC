@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Parsed.Data;
+using Parsed.Models;
 using System;
 
 namespace Parsed.Migrations
@@ -135,8 +136,6 @@ namespace Parsed.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<int?>("CompanyID");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -174,8 +173,6 @@ namespace Parsed.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyID");
-
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -202,7 +199,23 @@ namespace Parsed.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CNPJ")
+                        .IsUnique();
+
                     b.ToTable("Company");
+                });
+
+            modelBuilder.Entity("Parsed.Models.CompanyUser", b =>
+                {
+                    b.Property<int>("CompanyID");
+
+                    b.Property<int>("UserID");
+
+                    b.Property<int>("Role");
+
+                    b.HasKey("CompanyID", "UserID");
+
+                    b.ToTable("CompanyUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -248,13 +261,6 @@ namespace Parsed.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Parsed.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("Parsed.Models.Company")
-                        .WithMany("Users")
-                        .HasForeignKey("CompanyID");
                 });
 #pragma warning restore 612, 618
         }
