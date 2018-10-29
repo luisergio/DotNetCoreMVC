@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="2FA" xml:space="preserve">
-    <value>Dois Fatores de Atutenticação</value>
+    <value>Autenticação de Dois Fatores</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Trocar Senha</value>

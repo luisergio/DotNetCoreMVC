@@ -127,7 +127,7 @@ Google Authenticator para
 &lt;a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8"&gt; iOS &lt;/a&gt;.</value>
   </data>
   <data name="Enable2faStep2" xml:space="preserve">
-    <value>Escaneie o QR Code ou insira essa chave &lt;kbd&gt; {0} &lt;/ kbd&gt; em seu aplicativo autenticador de dois fatores. Espaços e revestimento não importam.</value>
+    <value>Escaneie o QR Code ou insira essa chave &lt;kbd&gt;{0}&lt;/kbd&gt; em seu aplicativo autenticador de dois fatores. Espaços e revestimento não importam.</value>
   </data>
   <data name="Enable2faStep3" xml:space="preserve">
     <value>Para ativar a geração de códigos QR, leia nossa &lt;a href="https://go.microsoft.com/fwlink/?Linkid=852423"&gt; documentação &lt;/a&gt;.</value>

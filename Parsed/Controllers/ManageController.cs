@@ -92,7 +92,10 @@ namespace Parsed.Controllers
             var firstName = user.FirstName;
             if (model.FirstName != firstName)
             {
-                var setFirstNameResult = await _userManager.SetUserNameAsync(user, model.FirstName);
+                user.FirstName = model.FirstName;
+
+                var setFirstNameResult = _userManager.UpdateAsync(user).Result;
+
                 if (!setFirstNameResult.Succeeded)
                 {
                     throw new ApplicationException(_localizer["ErrorSettingFirstName", user.Id].Value);
@@ -102,20 +105,13 @@ namespace Parsed.Controllers
             var lastName = user.LastName;
             if (model.LastName != lastName)
             {
-                var setLastNameResult = await _userManager.SetUserNameAsync(user, model.LastName);
+                user.LastName = model.LastName;
+
+                var setLastNameResult = _userManager.UpdateAsync(user).Result;
+
                 if (!setLastNameResult.Succeeded)
                 {
                     throw new ApplicationException(_localizer["ErrorSettingLastName", user.Id].Value);
-                }
-            }
-
-            var email = user.Email;
-            if (model.Email != email)
-            {
-                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
-                if (!setEmailResult.Succeeded)
-                {
-                    throw new ApplicationException(_localizer["ErrorSettingEmail", user.Id].Value );
                 }
             }
 

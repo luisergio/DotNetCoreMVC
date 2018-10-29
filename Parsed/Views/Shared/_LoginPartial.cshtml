@@ -8,14 +8,17 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-
 <ul class="nav navbar-nav navbar-right">
 
     @if (SignInManager.IsSignedIn(User))
     {
+        var applications = UserManager.Users.FirstOrDefault(o => o.UserName == UserManager.GetUserName(User));
+
+        var user = applications == null ? UserManager.GetUserName(User) : applications.FirstName;
+
         <li>
             <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">
-                @Localizer["Hello"] @UserManager.GetUserName(User)!
+                @Localizer["Hello"] @user!
             </a>
         </li>
         <li>
