@@ -5,15 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Parsed.Data;
 using Parsed.Models;
 
 namespace Parsed.Controllers
 {
+    
     public class CompaniesController : Controller
     {
-        private readonly CompanyContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CompaniesController(CompanyContext context)
+        public CompaniesController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -149,4 +151,5 @@ namespace Parsed.Controllers
             return _context.Company.Any(e => e.ID == id);
         }
     }
+
 }

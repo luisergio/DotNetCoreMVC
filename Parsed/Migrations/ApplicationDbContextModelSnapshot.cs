@@ -11,10 +11,9 @@ using System;
 namespace Parsed.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181029021907_Initial")]
-    partial class Initial
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,6 +135,8 @@ namespace Parsed.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int?>("CompanyID");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -173,6 +174,8 @@ namespace Parsed.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyID");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -182,6 +185,24 @@ namespace Parsed.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Parsed.Models.Company", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CNPJ")
+                        .IsRequired();
+
+                    b.Property<byte[]>("DigitalCertificate");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -227,6 +248,13 @@ namespace Parsed.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Parsed.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Parsed.Models.Company")
+                        .WithMany("Users")
+                        .HasForeignKey("CompanyID");
                 });
 #pragma warning restore 612, 618
         }
