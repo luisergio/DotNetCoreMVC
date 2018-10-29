@@ -142,9 +142,9 @@
     <value>Redefinir Senha</value>
   </data>
   <data name="UnableToLoad2FAUser" xml:space="preserve">
-    <value>Não é possÃ­vel carregar o usuário de autenticação de dois fatores.</value>
+    <value>Não é possível carregar o usuário de autenticação de dois fatores.</value>
   </data>
   <data name="UnableToLoadUser" xml:space="preserve">
-    <value>Não é possÃ­vel carregar o usuário com o ID '{0}'.</value>
+    <value>Não é possível carregar o usuário com o ID '{0}'.</value>
   </data>
 </root>

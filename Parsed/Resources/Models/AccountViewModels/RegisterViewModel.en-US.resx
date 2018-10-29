@@ -132,6 +132,18 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>The Email field is required.</value>
   </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>The First Name field is required.</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LastNameRequired" xml:space="preserve">
+    <value>The Last Name field is required.</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -143,11 +155,5 @@
   </data>
   <data name="PasswordTypeValidation" xml:space="preserve">
     <value>The Password field does not have a valid password.</value>
-  </data>
-  <data name="UserName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="UserNameRequired" xml:space="preserve">
-    <value>The Name field is required.</value>
   </data>
 </root>

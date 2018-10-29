@@ -189,7 +189,7 @@ $.validator.addMethod( "cifES", function( value ) {
 }, "Please specify a valid CIF number." );
 
 /*
- * Brazillian CPF number (Cadastrado de Pessoas FÃ­sicas) is the equivalent of a Brazilian tax registration number.
+ * Brazillian CPF number (Cadastrado de Pessoas Físicas) is the equivalent of a Brazilian tax registration number.
  * CPF numbers have 11 digits in total: 9 numbers followed by 2 check numbers that are being used for validation.
  */
 $.validator.addMethod("cpfBR", function(value) {
@@ -581,7 +581,7 @@ $.validator.addMethod("mobileUK", function(phone_number, element) {
 }, "Please specify a valid mobile number");
 
 /*
- * The nÃºmero de identidad de extranjero ( NIE )is a code used to identify the non-nationals in Spain
+ * The número de identidad de extranjero ( NIE )is a code used to identify the non-nationals in Spain
  */
 $.validator.addMethod( "nieES", function( value ) {
 	"use strict";
@@ -616,7 +616,7 @@ $.validator.addMethod( "nieES", function( value ) {
 }, "Please specify a valid NIE number." );
 
 /*
- * The NÃºmero de Identificación Fiscal ( NIF ) is the way tax identification used in Spain for individuals
+ * The Número de Identificación Fiscal ( NIF ) is the way tax identification used in Spain for individuals
  */
 $.validator.addMethod( "nifES", function( value ) {
 	"use strict";

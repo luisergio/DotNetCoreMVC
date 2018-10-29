@@ -135,6 +135,12 @@
   <data name="ErrorSettingEmail" xml:space="preserve">
     <value>Unexpected error occurred setting email for user with ID '{0}'.</value>
   </data>
+  <data name="ErrorSettingFirstName" xml:space="preserve">
+    <value>Unexpected error occurred setting first name for user with ID '{0}'.</value>
+  </data>
+  <data name="ErrorSettingLastName" xml:space="preserve">
+    <value>Unexpected error occurred setting last name for user with ID '{0}'.</value>
+  </data>
   <data name="ErrorSettingPhone" xml:space="preserve">
     <value>Unexpected error occurred setting phone number for user with ID '{0}'.</value>
   </data>

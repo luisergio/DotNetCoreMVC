@@ -121,7 +121,7 @@
     <value>Código Autenticador</value>
   </data>
   <data name="AuthenticatorCodeLength" xml:space="preserve">
-    <value>O campo {0} deve ter no mÃ­nimo {2} e no máximo {1} caracteres.</value>
+    <value>O campo {0} deve ter no mínimo {2} e no máximo {1} caracteres.</value>
   </data>
   <data name="AuthenticatorCodeRequired" xml:space="preserve">
     <value>O campo Código Autenticador é obrigatório.</value>

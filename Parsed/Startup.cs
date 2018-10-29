@@ -54,7 +54,7 @@ namespace Parsed
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            #region Configurações para trabalhar com mÃºltiplas linguas
+            #region Configurações para trabalhar com múltiplas linguas
 
             var supportedCultures = new List<CultureInfo>
             {

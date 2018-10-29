@@ -8,9 +8,13 @@ namespace Parsed.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "UserNameRequired")]
-        [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        [Required(ErrorMessage = "FirstNameRequired")]
+        [Display(Name = "FirstName")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "LastNameRequired")]
+        [Display(Name = "LastName")]
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "EmailRequired")]
         [EmailAddress(ErrorMessage = "EmailInvalid")]

@@ -62,7 +62,9 @@ namespace Parsed.Controllers
 
             var model = new IndexViewModel
             {
-                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
@@ -85,6 +87,26 @@ namespace Parsed.Controllers
             if (user == null)
             {
                 throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
+            }
+
+            var firstName = user.FirstName;
+            if (model.FirstName != firstName)
+            {
+                var setFirstNameResult = await _userManager.SetUserNameAsync(user, model.FirstName);
+                if (!setFirstNameResult.Succeeded)
+                {
+                    throw new ApplicationException(_localizer["ErrorSettingFirstName", user.Id].Value);
+                }
+            }
+
+            var lastName = user.LastName;
+            if (model.LastName != lastName)
+            {
+                var setLastNameResult = await _userManager.SetUserNameAsync(user, model.LastName);
+                if (!setLastNameResult.Succeeded)
+                {
+                    throw new ApplicationException(_localizer["ErrorSettingLastName", user.Id].Value);
+                }
             }
 
             var email = user.Email;

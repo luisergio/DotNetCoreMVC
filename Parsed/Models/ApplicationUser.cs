@@ -14,6 +14,12 @@ namespace Parsed.Models
 
         public string LastName { get; set; }
 
+        public string FullName {
+            get {
+                return String.Concat(FirstName, " ", LastName);
+            }
+        }
+
         [NotMapped]
         public virtual IList<Company> Companies { get; set; }
     }

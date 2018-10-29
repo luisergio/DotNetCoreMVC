@@ -133,10 +133,16 @@
     <value>Ocorreu um erro inesperado ao remover o login externo do usuário com o ID '{0}'.</value>
   </data>
   <data name="ErrorSettingEmail" xml:space="preserve">
-    <value>Ocorreu um erro inesperado ao configurar o email para o usuário com o ID '{0}'.</value>
+    <value>Ocorreu um erro inesperado ao definir o email para o usuário com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorSettingFirstName" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao definir o primeiro nome para o usuário com o ID '{0}'.</value>
+  </data>
+  <data name="ErrorSettingLastName" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao definir o último nome para o usuário com o ID '{0}'.</value>
   </data>
   <data name="ErrorSettingPhone" xml:space="preserve">
-    <value>Ocorreu um erro inesperado ao configurar o nÃºmero de telefone do usuário com o ID '{0}'.</value>
+    <value>Ocorreu um erro inesperado ao definir o número de telefone do usuário com o ID '{0}'.</value>
   </data>
   <data name="ExternalLoginAdded" xml:space="preserve">
     <value>O login externo foi adicionado.</value>
@@ -154,7 +160,7 @@
     <value>Seu perfil foi atualizado</value>
   </data>
   <data name="UnableToLoadUser" xml:space="preserve">
-    <value>Não é possÃ­vel carregar o usuário com o ID '{0}'.</value>
+    <value>Não é possível carregar o usuário com o ID '{0}'.</value>
   </data>
   <data name="VerificationCodeInvalid" xml:space="preserve">
     <value>O código de verificação é inválido.</value>
