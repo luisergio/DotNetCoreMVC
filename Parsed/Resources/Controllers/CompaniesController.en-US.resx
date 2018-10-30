@@ -117,22 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Companies" xml:space="preserve">
-    <value>Empresas</value>
-  </data>
-  <data name="CreateNew" xml:space="preserve">
-    <value>Cadastrar Nova</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Excluir</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="Invoices" xml:space="preserve">
-    <value>Notas Fiscais</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Usuários</value>
+  <data name="CNPJAlreadyExists" xml:space="preserve">
+    <value>This CNPJ is already registered in the system.</value>
   </data>
 </root>

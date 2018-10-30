@@ -97,3 +97,23 @@ a:hover, a:focus {
 .form-control:focus {
     border-color: #00C1C4;
 }
+
+.btn-dropdown-menu {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333 !important;
+    white-space: nowrap;
+    text-align:left;
+    width:100%;
+}
+
+.btn-dropdown-menu:hover {
+    text-decoration:none;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f5f5f5;
+}

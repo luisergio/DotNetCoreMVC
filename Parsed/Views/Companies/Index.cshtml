@@ -44,11 +44,13 @@
                     @Html.DisplayFor(modelItem => item.CNPJ)
                 </td>
                 <td style="text-align:right">
-                    <a asp-action="Invoice" asp-route-id="@item.ID" title="@Localizer["Invoices"]"><img src="~/images/icons/paper.svg" /></a>
+                    <a asp-action="Details" asp-route-id="@item.ID" title="@Localizer["Invoices"]"><img src="~/images/icons/charts3.svg" /></a>
 
                     <a asp-action="Edit" asp-route-id="@item.ID" title="@Localizer["Edit"]"><img src="~/images/icons/edit.svg" /></a>
 
-                    <a asp-action="Details" asp-route-id="@item.ID" title="@Localizer["Users"]"><img src="~/images/icons/people.svg" /></a>
+                    <!--
+                    <a asp-action="Users" asp-route-id="@item.ID" title="@Localizer["Users"]"><img src="~/images/icons/people.svg" /></a>
+                    -->
 
                     <a asp-action="Delete" asp-route-id="@item.ID" title="@Localizer["Delete"]"><img src="~/images/icons/delete.svg" /></a>
                 </td>

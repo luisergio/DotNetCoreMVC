@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 using Microsoft.EntityFrameworkCore;
 using Parsed.Data;
 using Parsed.Models;
@@ -14,22 +15,25 @@ namespace Parsed.Controllers
     
     public class CompaniesController : Controller
     {
+        private readonly IStringLocalizer<CompaniesController> _localizer;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public CompaniesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public CompaniesController(ApplicationDbContext context, 
+            UserManager<ApplicationUser> userManager,
+            IStringLocalizer<CompaniesController> localizer)
         {
             _context = context;
             _userManager = userManager;
+            _localizer = localizer;
         }
 
         // GET: Companies
         public async Task<IActionResult> Index()
         {
+            //Lista somente as empresas do usuário logado.
             ApplicationUser appUser = await _userManager.GetUserAsync(User);
-
             List<Company> companies = await _context.Company.Include(c => c.Users).ToListAsync();
-
             companies = companies.Where(c => c.Users.Where(cu => cu.User == appUser).Any()).ToList();
 
             return View(companies);
@@ -68,15 +72,22 @@ namespace Parsed.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Verifica se existe alguma empresa com o mesmo CNPJ
+                if (_context.Company.Where(c => c.CNPJ == company.CNPJ).Any())
+                {
+                    ModelState.AddModelError(string.Empty, _localizer["CNPJAlreadyExists"].Value);
+                    return View(company);
+                }
+
+                //Salva a Empresa
                 _context.Add(company);
                 await _context.SaveChangesAsync();
 
+                //Salva o Usuário logado como Administrador da Empresa.
                 CompanyUser CompanyPermission = new CompanyUser();
-
                 CompanyPermission.CompanyID = company.ID;
                 CompanyPermission.UserID = _userManager.GetUserId(User);
                 CompanyPermission.Role = CompanyUserRole.Administrator;
-
                 _context.Add(CompanyPermission);
                 await _context.SaveChangesAsync();
 
@@ -88,16 +99,25 @@ namespace Parsed.Controllers
         // GET: Companies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ApplicationUser appUser = await _userManager.GetUserAsync(User);
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var company = await _context.Company.SingleOrDefaultAsync(m => m.ID == id);
+            var company = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
             if (company == null)
             {
                 return NotFound();
             }
+
+            //Se o usuário não tiver permissão para acessar a Empresa
+            if (!company.Users.Where(c => c.UserID == appUser.Id).Any())
+            {
+                return NotFound();
+            }
+
             return View(company);
         }
 
