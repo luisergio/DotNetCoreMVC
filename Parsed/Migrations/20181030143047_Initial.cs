@@ -66,19 +66,6 @@ namespace Parsed.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CompanyUser",
-                columns: table => new
-                {
-                    CompanyID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
-                    Role = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompanyUser", x => new { x.CompanyID, x.UserID });
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -184,6 +171,31 @@ namespace Parsed.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CompanyUser",
+                columns: table => new
+                {
+                    CompanyID = table.Column<int>(nullable: false),
+                    UserID = table.Column<string>(maxLength: 450, nullable: false),
+                    Role = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompanyUser", x => new { x.CompanyID, x.UserID });
+                    table.ForeignKey(
+                        name: "FK_CompanyUser_Company_CompanyID",
+                        column: x => x.CompanyID,
+                        principalTable: "Company",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompanyUser_AspNetUsers_UserID",
+                        column: x => x.UserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -228,6 +240,11 @@ namespace Parsed.Migrations
                 table: "Company",
                 column: "CNPJ",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CompanyUser_UserID",
+                table: "CompanyUser",
+                column: "UserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -248,13 +265,13 @@ namespace Parsed.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Company");
-
-            migrationBuilder.DropTable(
                 name: "CompanyUser");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Company");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

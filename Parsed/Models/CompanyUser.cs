@@ -12,9 +12,13 @@ namespace Parsed.Models
         [ForeignKey("Company")]
         public int CompanyID { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        public int UserID { get; set; }
+        public Company Company { get; set; }
 
+        [ForeignKey("ApplicationUser")]
+        [MaxLength(450)]
+        public string UserID { get; set; }
+
+        public ApplicationUser User { get; set; }
 
         public CompanyUserRole Role { get; set; }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,16 +15,24 @@ namespace Parsed.Controllers
     public class CompaniesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CompaniesController(ApplicationDbContext context)
+        public CompaniesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Companies
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Company.ToListAsync());
+            ApplicationUser appUser = await _userManager.GetUserAsync(User);
+
+            List<Company> companies = await _context.Company.Include(c => c.Users).ToListAsync();
+
+            companies = companies.Where(c => c.Users.Where(cu => cu.User == appUser).Any()).ToList();
+
+            return View(companies);
         }
 
         // GET: Companies/Details/5
@@ -61,6 +70,16 @@ namespace Parsed.Controllers
             {
                 _context.Add(company);
                 await _context.SaveChangesAsync();
+
+                CompanyUser CompanyPermission = new CompanyUser();
+
+                CompanyPermission.CompanyID = company.ID;
+                CompanyPermission.UserID = _userManager.GetUserId(User);
+                CompanyPermission.Role = CompanyUserRole.Administrator;
+
+                _context.Add(CompanyPermission);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(company);

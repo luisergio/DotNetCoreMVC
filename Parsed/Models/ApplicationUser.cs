@@ -23,8 +23,7 @@ namespace Parsed.Models
             }
         }
 
-        [NotMapped]
-        public virtual IList<Company> Companies { get; set; }
+        public virtual IList<CompanyUser> Companies { get; set; }
 
         #endregion
     }

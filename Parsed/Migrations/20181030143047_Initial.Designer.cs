@@ -12,7 +12,7 @@ using System;
 namespace Parsed.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181029045127_Initial")]
+    [Migration("20181030143047_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -210,11 +210,14 @@ namespace Parsed.Migrations
                 {
                     b.Property<int>("CompanyID");
 
-                    b.Property<int>("UserID");
+                    b.Property<string>("UserID")
+                        .HasMaxLength(450);
 
                     b.Property<int>("Role");
 
                     b.HasKey("CompanyID", "UserID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("CompanyUser");
                 });
@@ -261,6 +264,19 @@ namespace Parsed.Migrations
                     b.HasOne("Parsed.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Parsed.Models.CompanyUser", b =>
+                {
+                    b.HasOne("Parsed.Models.Company", "Company")
+                        .WithMany("Users")
+                        .HasForeignKey("CompanyID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Parsed.Models.ApplicationUser", "User")
+                        .WithMany("Companies")
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

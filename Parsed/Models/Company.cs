@@ -22,8 +22,7 @@ namespace Parsed.Models
         [Display(Name = "DigitalCertificate")]
         public byte[] DigitalCertificate { get; set; }
 
-        [NotMapped]
         [Display(Name = "Users")]
-        public virtual IList<ApplicationUser> Users { get; set; }
+        public virtual IList<CompanyUser> Users { get; set; }
     }
 }

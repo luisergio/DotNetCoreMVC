@@ -124,9 +124,9 @@
     <value>Empresa</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Deletar</value>
+    <value>Excluir</value>
   </data>
   <data name="YouWantToDelete" xml:space="preserve">
-    <value>Você tem certeza que deseja deletar?</value>
+    <value>Você tem certeza que deseja excluir?</value>
   </data>
 </root>
