@@ -7,11 +7,20 @@
     ViewData["Title"] = Localizer["Companies"];
 }
 
-<h2>@ViewData["Title"]</h2>
 
-<p>
-    <a asp-action="Create">@Localizer["CreateNew"]</a>
-</p>
+<div class="table">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>@ViewData["Title"]</h2>
+        </div>
+        <div class="col-sm-6 hidden-xs" style="text-align:right; padding-top:25px">
+            <a asp-action="Create" class="btn btn-parsed">@Localizer["CreateNew"]</a>
+        </div>
+        <div class="col-sm-6 visible-xs" style="padding-top:10px">
+            <a asp-action="Create" class="btn btn-parsed">@Localizer["CreateNew"]</a>
+        </div>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -20,9 +29,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CNPJ)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DigitalCertificate)
             </th>
             <th></th>
         </tr>
@@ -37,13 +43,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CNPJ)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DigitalCertificate)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">@Localizer["Edit"]</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">@Localizer["Details"]</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">@Localizer["Delete"]</a>
+                <td style="text-align:right">
+                    <a asp-action="Invoice" asp-route-id="@item.ID" title="@Localizer["Invoices"]"><img src="~/images/icons/paper.svg" /></a>
+
+                    <a asp-action="Edit" asp-route-id="@item.ID" title="@Localizer["Edit"]"><img src="~/images/icons/edit.svg" /></a>
+
+                    <a asp-action="Details" asp-route-id="@item.ID" title="@Localizer["Users"]"><img src="~/images/icons/people.svg" /></a>
+
+                    <a asp-action="Delete" asp-route-id="@item.ID" title="@Localizer["Delete"]"><img src="~/images/icons/delete.svg" /></a>
                 </td>
             </tr>
         }

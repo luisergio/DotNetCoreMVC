@@ -25,15 +25,9 @@
         <dd>
             @Html.DisplayFor(model => model.CNPJ)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DigitalCertificate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DigitalCertificate)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">@ViewData["Edit"]</a> |
-    <a asp-action="Index">@ViewData["BackToList"]</a>
+    <a asp-action="Edit" asp-route-id="@Model.ID">@Localizer["Edit"]</a> |
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>

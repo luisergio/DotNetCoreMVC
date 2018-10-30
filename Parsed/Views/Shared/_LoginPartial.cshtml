@@ -17,8 +17,13 @@
         var user = applications == null ? UserManager.GetUserName(User) : applications.FirstName;
 
         <li>
-            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">
+            <a asp-area="" asp-controller="Manage" asp-action="Index" title="@Localizer["Manage"]">
                 @Localizer["Hello"] @user!
+            </a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Companies" asp-action="Index">
+                @Localizer["Companies"]
             </a>
         </li>
         <li>

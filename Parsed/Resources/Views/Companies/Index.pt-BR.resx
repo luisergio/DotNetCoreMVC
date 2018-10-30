@@ -126,10 +126,13 @@
   <data name="Delete" xml:space="preserve">
     <value>Deletar</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Detalhes</value>
-  </data>
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>Notas Fiscais</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuários</value>
   </data>
 </root>

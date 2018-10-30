@@ -26,17 +26,11 @@
         <dd>
             @Html.DisplayFor(model => model.CNPJ)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DigitalCertificate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DigitalCertificate)
-        </dd>
     </dl>
-
+    <hr />
     <form asp-action="Delete">
         <input type="hidden" asp-for="ID" />
-        <input type="submit" value="@Localizer["Delete"]" class="btn btn-default" /> |
-        <a asp-action="Index">@Localizer["BackToList"]</a>
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-parsed" /> &nbsp; &nbsp; &nbsp;
+        <a asp-action="Index" class="btn btn-danger">@Localizer["Cancel"]</a>
     </form>
 </div>

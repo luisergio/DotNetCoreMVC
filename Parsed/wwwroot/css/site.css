@@ -66,4 +66,34 @@ a svg:hover #language {
     height:40px
 }
 
+.nav-pills > li.active > a {
+    background-color: #007D77;
+}
 
+.nav-pills > li.active > a:hover {
+    background-color: #004140;
+}
+
+a {
+    color: #007D77;
+}
+
+a:hover, a:focus {
+    color: #004140;
+}
+
+.btn-parsed {
+    color: #fff;
+    background-color: #007D77;
+    border-color: #006D67;
+}
+
+.btn-parsed:hover, .btn-parsed:focus {
+    color: #fff;
+    background-color: #004140;
+    border-color: #003130;
+}
+
+.form-control:focus {
+    border-color: #00C1C4;
+}
