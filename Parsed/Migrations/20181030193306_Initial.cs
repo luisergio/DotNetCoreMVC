@@ -54,7 +54,7 @@ namespace Parsed.Migrations
                 name: "Company",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    ID = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CNPJ = table.Column<string>(nullable: false),
                     DigitalCertificate = table.Column<byte[]>(nullable: true),
@@ -175,7 +175,7 @@ namespace Parsed.Migrations
                 name: "CompanyUser",
                 columns: table => new
                 {
-                    CompanyID = table.Column<int>(nullable: false),
+                    CompanyID = table.Column<long>(nullable: false),
                     UserID = table.Column<string>(maxLength: 450, nullable: false),
                     Role = table.Column<int>(nullable: false)
                 },

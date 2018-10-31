@@ -120,4 +120,7 @@
   <data name="CNPJAlreadyExists" xml:space="preserve">
     <value>This CNPJ is already registered in the system.</value>
   </data>
+  <data name="CNPJInvalid" xml:space="preserve">
+    <value>This CNPJ is invalid.</value>
+  </data>
 </root>

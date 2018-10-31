@@ -12,7 +12,7 @@ using System;
 namespace Parsed.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181030143047_Initial")]
+    [Migration("20181030193306_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,7 +187,7 @@ namespace Parsed.Migrations
 
             modelBuilder.Entity("Parsed.Models.Company", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CNPJ")
@@ -208,7 +208,7 @@ namespace Parsed.Migrations
 
             modelBuilder.Entity("Parsed.Models.CompanyUser", b =>
                 {
-                    b.Property<int>("CompanyID");
+                    b.Property<long>("CompanyID");
 
                     b.Property<string>("UserID")
                         .HasMaxLength(450);

@@ -186,7 +186,7 @@ namespace Parsed.Migrations
 
             modelBuilder.Entity("Parsed.Models.Company", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CNPJ")
@@ -207,7 +207,7 @@ namespace Parsed.Migrations
 
             modelBuilder.Entity("Parsed.Models.CompanyUser", b =>
                 {
-                    b.Property<int>("CompanyID");
+                    b.Property<long>("CompanyID");
 
                     b.Property<string>("UserID")
                         .HasMaxLength(450);

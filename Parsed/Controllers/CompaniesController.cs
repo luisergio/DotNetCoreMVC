@@ -9,6 +9,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.EntityFrameworkCore;
 using Parsed.Data;
 using Parsed.Models;
+using Parsed.Services;
 
 namespace Parsed.Controllers
 {
@@ -72,6 +73,13 @@ namespace Parsed.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Verifica se o CNPJ é válido
+                if (!ValidationService.ValidaCnpj(company.CNPJ))
+                {
+                    ModelState.AddModelError(string.Empty, _localizer["CNPJInvalid"].Value);
+                    return View(company);
+                }
+
                 //Verifica se existe alguma empresa com o mesmo CNPJ
                 if (_context.Company.Where(c => c.CNPJ == company.CNPJ).Any())
                 {
@@ -80,6 +88,7 @@ namespace Parsed.Controllers
                 }
 
                 //Salva a Empresa
+                //company.ID = Int64.Parse(company.CNPJ.Replace(".", "").Replace("-", "").Replace("/", ""));
                 _context.Add(company);
                 await _context.SaveChangesAsync();
 
@@ -97,7 +106,7 @@ namespace Parsed.Controllers
         }
 
         // GET: Companies/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(long? id)
         {
             ApplicationUser appUser = await _userManager.GetUserAsync(User);
 
@@ -126,23 +135,54 @@ namespace Parsed.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,CNPJ,DigitalCertificate")] Company company)
+        public async Task<IActionResult> Edit(long id, [Bind("ID,Title,CNPJ,DigitalCertificate")] Company newCompany)
         {
-            if (id != company.ID)
+            if (id != newCompany.ID)
             {
                 return NotFound();
             }
+
+            ApplicationUser appUser = await _userManager.GetUserAsync(User);
+            var currentCompany = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
+
+            //Se o usuário não tiver permissão para acessar a Empresa
+            if (!currentCompany.Users.Where(c => c.UserID == appUser.Id).Any())
+            {
+                return NotFound();
+            }
+
+            //Se o CNPJ atual for diferente do que está atualmente no banco de dados.
+            if (currentCompany.CNPJ != newCompany.CNPJ)
+            {
+                //Verifica se o CNPJ é válido
+                if (!ValidationService.ValidaCnpj(newCompany.CNPJ))
+                {
+                    ModelState.AddModelError(string.Empty, _localizer["CNPJInvalid"].Value);
+                    return View(newCompany);
+                }
+
+                //Verifica se existe alguma empresa com o mesmo CNPJ
+                if (_context.Company.Where(c => c.CNPJ == newCompany.CNPJ).Any())
+                {
+                    ModelState.AddModelError(string.Empty, _localizer["CNPJAlreadyExists"].Value);
+                    return View(newCompany);
+                }
+            }
+
+            //passa os valores para o item baixados pra nãr erro de tracking
+            currentCompany.Title = newCompany.Title;
+            currentCompany.CNPJ = newCompany.CNPJ;
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(company);
+                    _context.Update(currentCompany);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CompanyExists(company.ID))
+                    if (!CompanyExists(currentCompany.ID))
                     {
                         return NotFound();
                     }
@@ -153,20 +193,27 @@ namespace Parsed.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(company);
+            return View(currentCompany);
         }
 
         // GET: Companies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var company = await _context.Company
-                .SingleOrDefaultAsync(m => m.ID == id);
+            ApplicationUser appUser = await _userManager.GetUserAsync(User);
+            var company = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
+
             if (company == null)
+            {
+                return NotFound();
+            }
+
+            //Se o usuário não tiver permissão para acessar a Empresa
+            if (!company.Users.Where(c => c.UserID == appUser.Id).Any())
             {
                 return NotFound();
             }
@@ -177,15 +224,23 @@ namespace Parsed.Controllers
         // POST: Companies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var company = await _context.Company.SingleOrDefaultAsync(m => m.ID == id);
+            ApplicationUser appUser = await _userManager.GetUserAsync(User);
+            var company = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
+
+            //Se o usuário não tiver permissão para acessar a Empresa
+            if (!company.Users.Where(c => c.UserID == appUser.Id).Any())
+            {
+                return NotFound();
+            }
+
             _context.Company.Remove(company);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CompanyExists(int id)
+        private bool CompanyExists(long id)
         {
             return _context.Company.Any(e => e.ID == id);
         }

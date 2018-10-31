@@ -10,7 +10,7 @@ namespace Parsed.Models
     public class CompanyUser
     {
         [ForeignKey("Company")]
-        public int CompanyID { get; set; }
+        public long CompanyID { get; set; }
 
         public Company Company { get; set; }
 

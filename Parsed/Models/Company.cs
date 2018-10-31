@@ -10,7 +10,7 @@ namespace Parsed.Models
 {
     public class Company
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
 
         [Required(ErrorMessage = "TitleRequired")]
         [Display(Name = "Title")]
