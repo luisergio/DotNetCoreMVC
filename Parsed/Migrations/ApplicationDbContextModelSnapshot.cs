@@ -200,6 +200,8 @@ namespace Parsed.Migrations
 
                     b.Property<byte[]>("DigitalCertificate");
 
+                    b.Property<string>("DigitalCertificateFileName");
+
                     b.Property<string>("Title")
                         .IsRequired();
 

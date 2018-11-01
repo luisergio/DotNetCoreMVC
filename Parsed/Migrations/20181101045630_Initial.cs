@@ -167,6 +167,7 @@ namespace Parsed.Migrations
                     CreatedByID = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     DigitalCertificate = table.Column<byte[]>(nullable: true),
+                    DigitalCertificateFileName = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

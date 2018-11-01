@@ -75,6 +75,13 @@ namespace Parsed.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Verifica se o arquivo é maior que 28,6 MB
+                if (newCompany.DigitalCertificate != null && newCompany.DigitalCertificate.Length > 30000000)
+                {
+                    ModelState.AddModelError(string.Empty, _localizer["FileMaxLength"].Value);
+                    return View(newCompany);
+                }
+
                 //Verifica se o CNPJ é válido
                 if (!ValidationService.ValidaCnpj(newCompany.CNPJ))
                 {
@@ -106,6 +113,7 @@ namespace Parsed.Controllers
                     {
                         await newCompany.DigitalCertificate.CopyToAsync(memoryStream);
                         company.DigitalCertificate = memoryStream.ToArray();
+                        company.DigitalCertificateFileName = newCompany.DigitalCertificate.FileName;
                     }
                 }
 
@@ -180,8 +188,15 @@ namespace Parsed.Controllers
                 return NotFound();
             }
 
+            //Verifica se o arquivo é maior que 28,6 MB
+            if (newCompany.DigitalCertificate != null && newCompany.DigitalCertificate.Length > 30000000) 
+            {
+                ModelState.AddModelError(string.Empty, _localizer["FileMaxLength"].Value);
+                return View(newCompany);
+            }
+
             //Se o CNPJ atual for diferente do que está atualmente no banco de dados.
-            if (currentCompany.CNPJ != newCompany.CNPJ)
+                if (currentCompany.CNPJ != newCompany.CNPJ)
             {
                 //Verifica se o CNPJ é válido
                 if (!ValidationService.ValidaCnpj(newCompany.CNPJ))
@@ -213,6 +228,7 @@ namespace Parsed.Controllers
                         {
                             await newCompany.DigitalCertificate.CopyToAsync(memoryStream);
                             currentCompany.DigitalCertificate = memoryStream.ToArray();
+                            currentCompany.DigitalCertificateFileName = newCompany.DigitalCertificate.FileName;
                         }
                     }
 
@@ -277,6 +293,33 @@ namespace Parsed.Controllers
             _context.Company.Remove(company);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+
+        public async Task<IActionResult> DownloadDigitalCertificate(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ApplicationUser appUser = await _userManager.GetUserAsync(User);
+            var company = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
+
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            //Se o usuário não tiver permissão para administrar a Empresa
+            if (!company.Users.Where(c => c.UserID == appUser.Id && c.Role == CompanyUserRole.Administrator).Any())
+            {
+                return NotFound();
+            }
+
+            byte[] fileBytes = company.DigitalCertificate;
+            string fileName = company.DigitalCertificateFileName;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
         private bool CompanyExists(long id)

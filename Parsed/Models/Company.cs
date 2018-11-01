@@ -22,6 +22,8 @@ namespace Parsed.Models
         [Display(Name = "DigitalCertificate")]
         public byte[] DigitalCertificate { get; set; }
 
+        public string DigitalCertificateFileName { get; set; }
+
         public DateTime CreationDate { get; set; }
 
         public string CreatedByID { get; set; }

@@ -12,7 +12,7 @@ using System;
 namespace Parsed.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181031220758_Initial")]
+    [Migration("20181101045630_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -200,6 +200,8 @@ namespace Parsed.Migrations
                     b.Property<DateTime>("CreationDate");
 
                     b.Property<byte[]>("DigitalCertificate");
+
+                    b.Property<string>("DigitalCertificateFileName");
 
                     b.Property<string>("Title")
                         .IsRequired();

@@ -30,31 +30,47 @@
             <th>
                 @Html.DisplayNameFor(model => model.CNPJ)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DigitalCertificate)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CNPJ)
-                </td>
-                <td style="text-align:right">
-                    <a asp-action="Details" asp-route-id="@item.ID" title="@Localizer["Invoices"]"><img src="~/images/icons/charts3.svg" /></a>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @if (string.IsNullOrEmpty(item.DigitalCertificateFileName))
+                {
+                    <span class="text-danger">@Localizer["FileNotUploaded"]</span>
+                }
+                else
+                {
+                    <a asp-action="DownloadDigitalCertificate" asp-route-id="@item.ID">
+                        @Html.DisplayFor(modelItem => item.DigitalCertificateFileName)
+                    </a>
+                }
 
-                    <a asp-action="Edit" asp-route-id="@item.ID" title="@Localizer["Edit"]"><img src="~/images/icons/edit.svg" /></a>
+            </td>
+            <td style="text-align:right">
+                <a asp-action="Details" asp-route-id="@item.ID" title="@Localizer["Invoices"]"><img src="~/images/icons/charts3.svg" /></a>
 
-                    <!--
-                    <a asp-action="Users" asp-route-id="@item.ID" title="@Localizer["Users"]"><img src="~/images/icons/people.svg" /></a>
-                    -->
+                <a asp-action="Edit" asp-route-id="@item.ID" title="@Localizer["Edit"]"><img src="~/images/icons/edit.svg" /></a>
 
-                    <a asp-action="Delete" asp-route-id="@item.ID" title="@Localizer["Delete"]"><img src="~/images/icons/delete.svg" /></a>
-                </td>
-            </tr>
+                <!--
+                <a asp-action="Users" asp-route-id="@item.ID" title="@Localizer["Users"]"><img src="~/images/icons/people.svg" /></a>
+                -->
+
+                <a asp-action="Delete" asp-route-id="@item.ID" title="@Localizer["Delete"]"><img src="~/images/icons/delete.svg" /></a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
