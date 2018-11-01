@@ -41,6 +41,9 @@ namespace Parsed
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //Faz migrar automaticamente o banco de dados
+            services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();

@@ -1,1 +1,119 @@
-body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;padding-right:15px}.carousel-caption p{font-size:20px;line-height:1.4}.carousel-inner .item img[src$=".svg"]{width:100%}#qrCode{margin:15px}@media screen and (max-width:767px){.carousel-caption{display:none}}
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+/* CORES DA PARSED 
+
+    1: #004140
+    2: #007D77
+    3: #00C1C4
+
+*/
+
+
+a svg:hover #language {
+    fill: #FFF;
+}
+
+
+.dropdown-toggle-image {
+    height: 50px;
+    top: -2px;
+}
+
+#Logout {
+    padding-right: 25px;
+}
+
+.navbar-brand {
+    top: -10px;
+    position: relative;
+}
+
+    .navbar-brand img {
+        height: 40px
+    }
+
+.nav-pills > li.active > a {
+    background-color: #007D77;
+}
+
+    .nav-pills > li.active > a:hover {
+        background-color: #004140;
+    }
+
+a {
+    color: #007D77;
+}
+
+    a:hover, a:focus {
+        color: #004140;
+    }
+
+.btn-parsed {
+    color: #fff;
+    background-color: #007D77;
+    border-color: #006D67;
+}
+
+    .btn-parsed:hover, .btn-parsed:focus {
+        color: #fff;
+        background-color: #004140;
+        border-color: #003130;
+    }
+
+.form-control:focus {
+    border-color: #00C1C4;
+}
+
+.btn-dropdown-menu {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333 !important;
+    white-space: nowrap;
+    text-align: left;
+    width: 100%;
+}
+
+    .btn-dropdown-menu:hover {
+        text-decoration: none;
+    }
+
+.dropdown-menu li:hover {
+    background-color: #f5f5f5;
+}
