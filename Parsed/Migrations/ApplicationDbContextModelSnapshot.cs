@@ -139,6 +139,8 @@ namespace Parsed.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<DateTime>("CreationDate");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -192,6 +194,10 @@ namespace Parsed.Migrations
                     b.Property<string>("CNPJ")
                         .IsRequired();
 
+                    b.Property<string>("CreatedByID");
+
+                    b.Property<DateTime>("CreationDate");
+
                     b.Property<byte[]>("DigitalCertificate");
 
                     b.Property<string>("Title")
@@ -201,6 +207,8 @@ namespace Parsed.Migrations
 
                     b.HasIndex("CNPJ")
                         .IsUnique();
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Company");
                 });
@@ -264,6 +272,13 @@ namespace Parsed.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Parsed.Models.Company", b =>
+                {
+                    b.HasOne("Parsed.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID");
                 });
 
             modelBuilder.Entity("Parsed.Models.CompanyUser", b =>

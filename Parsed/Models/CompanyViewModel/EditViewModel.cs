@@ -1,3 +1,4 @@
+﻿using System;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -5,10 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
-namespace Parsed.Models
+namespace Parsed.Models.CompanyViewModel
 {
-    public class Company
+    public class EditViewModel
     {
         public long ID { get; set; }
 
@@ -20,15 +22,7 @@ namespace Parsed.Models
         public string CNPJ { get; set; }
 
         [Display(Name = "DigitalCertificate")]
-        public byte[] DigitalCertificate { get; set; }
+        public IFormFile DigitalCertificate { get; set; }
 
-        public DateTime CreationDate { get; set; }
-
-        public string CreatedByID { get; set; }
-
-        public virtual ApplicationUser CreatedBy { get; set; }
-
-        [Display(Name = "Users")]
-        public virtual IList<CompanyUser> Users { get; set; }
     }
 }

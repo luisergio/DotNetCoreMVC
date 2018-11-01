@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Parsed.Data;
 using Parsed.Models;
 using Parsed.Services;
+using System.IO;
+using Parsed.Models.CompanyViewModel;
 
 namespace Parsed.Controllers
 {
@@ -69,40 +71,59 @@ namespace Parsed.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,CNPJ,DigitalCertificate")] Company company)
+        public async Task<IActionResult> Create([Bind("ID,Title,CNPJ,DigitalCertificate")] EditViewModel newCompany)
         {
             if (ModelState.IsValid)
             {
                 //Verifica se o CNPJ é válido
-                if (!ValidationService.ValidaCnpj(company.CNPJ))
+                if (!ValidationService.ValidaCnpj(newCompany.CNPJ))
                 {
                     ModelState.AddModelError(string.Empty, _localizer["CNPJInvalid"].Value);
-                    return View(company);
+                    return View(newCompany);
                 }
 
                 //Verifica se existe alguma empresa com o mesmo CNPJ
-                if (_context.Company.Where(c => c.CNPJ == company.CNPJ).Any())
+                if (_context.Company.Where(c => c.CNPJ == newCompany.CNPJ).Any())
                 {
                     ModelState.AddModelError(string.Empty, _localizer["CNPJAlreadyExists"].Value);
-                    return View(company);
+                    return View(newCompany);
+                }
+
+                var UserID = _userManager.GetUserId(User);
+
+                //Cria objeto Empresa do Entity Framework
+                Company company = new Company() {
+                    CNPJ = newCompany.CNPJ,
+                    Title = newCompany.Title,
+                    CreationDate = DateTime.Now,
+                    CreatedByID = UserID
+                };
+
+                if (newCompany.DigitalCertificate != null && !string.IsNullOrEmpty(newCompany.DigitalCertificate.FileName))
+                {
+                    //copia o arquivo enviado para o objeto Empresa
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await newCompany.DigitalCertificate.CopyToAsync(memoryStream);
+                        company.DigitalCertificate = memoryStream.ToArray();
+                    }
                 }
 
                 //Salva a Empresa
-                //company.ID = Int64.Parse(company.CNPJ.Replace(".", "").Replace("-", "").Replace("/", ""));
                 _context.Add(company);
                 await _context.SaveChangesAsync();
 
                 //Salva o Usuário logado como Administrador da Empresa.
                 CompanyUser CompanyPermission = new CompanyUser();
                 CompanyPermission.CompanyID = company.ID;
-                CompanyPermission.UserID = _userManager.GetUserId(User);
+                CompanyPermission.UserID = UserID;
                 CompanyPermission.Role = CompanyUserRole.Administrator;
                 _context.Add(CompanyPermission);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-            return View(company);
+            return View(newCompany);
         }
 
         // GET: Companies/Edit/5
@@ -121,13 +142,20 @@ namespace Parsed.Controllers
                 return NotFound();
             }
 
-            //Se o usuário não tiver permissão para acessar a Empresa
-            if (!company.Users.Where(c => c.UserID == appUser.Id).Any())
+            //Se o usuário não tiver permissão para acessar a Empresa em modo de edição
+            if (!company.Users.Where(c => c.UserID == appUser.Id && c.Role == CompanyUserRole.Administrator).Any())
             {
                 return NotFound();
             }
 
-            return View(company);
+            EditViewModel edit = new EditViewModel()
+            {
+                ID = company.ID,
+                Title = company.Title,
+                CNPJ = company.CNPJ
+            };
+
+            return View(edit);
         }
 
         // POST: Companies/Edit/5
@@ -135,7 +163,8 @@ namespace Parsed.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("ID,Title,CNPJ,DigitalCertificate")] Company newCompany)
+        //[Bind("ID,Title,CNPJ,DigitalCertificate")]
+        public async Task<IActionResult> Edit(long id, EditViewModel newCompany)
         {
             if (id != newCompany.ID)
             {
@@ -145,8 +174,8 @@ namespace Parsed.Controllers
             ApplicationUser appUser = await _userManager.GetUserAsync(User);
             var currentCompany = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
 
-            //Se o usuário não tiver permissão para acessar a Empresa
-            if (!currentCompany.Users.Where(c => c.UserID == appUser.Id).Any())
+            //Se o usuário não tiver permissão para editar a Empresa
+            if (!currentCompany.Users.Where(c => c.UserID == appUser.Id && c.Role == CompanyUserRole.Administrator).Any())
             {
                 return NotFound();
             }
@@ -177,6 +206,16 @@ namespace Parsed.Controllers
             {
                 try
                 {
+                    if (newCompany.DigitalCertificate != null && !string.IsNullOrEmpty(newCompany.DigitalCertificate.FileName))
+                    {
+                        //copia o arquivo enviado para o objeto Empresa
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await newCompany.DigitalCertificate.CopyToAsync(memoryStream);
+                            currentCompany.DigitalCertificate = memoryStream.ToArray();
+                        }
+                    }
+
                     _context.Update(currentCompany);
                     await _context.SaveChangesAsync();
                 }
@@ -212,8 +251,8 @@ namespace Parsed.Controllers
                 return NotFound();
             }
 
-            //Se o usuário não tiver permissão para acessar a Empresa
-            if (!company.Users.Where(c => c.UserID == appUser.Id).Any())
+            //Se o usuário não tiver permissão para deletar a Empresa
+            if (!company.Users.Where(c => c.UserID == appUser.Id && c.Role == CompanyUserRole.Administrator).Any())
             {
                 return NotFound();
             }
@@ -229,8 +268,8 @@ namespace Parsed.Controllers
             ApplicationUser appUser = await _userManager.GetUserAsync(User);
             var company = await _context.Company.Include(c => c.Users).SingleOrDefaultAsync(m => m.ID == id);
 
-            //Se o usuário não tiver permissão para acessar a Empresa
-            if (!company.Users.Where(c => c.UserID == appUser.Id).Any())
+            //Se o usuário não tiver permissão para deletar a Empresa
+            if (!company.Users.Where(c => c.UserID == appUser.Id && c.Role == CompanyUserRole.Administrator).Any())
             {
                 return NotFound();
             }

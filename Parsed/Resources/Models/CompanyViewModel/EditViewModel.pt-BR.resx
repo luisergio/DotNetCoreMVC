@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CNPJAlreadyExists" xml:space="preserve">
-    <value>This CNPJ is already registered in the system.</value>
+  <data name="CNPJRequired" xml:space="preserve">
+    <value>O campo CNPJ é obrigatório.</value>
   </data>
-  <data name="CNPJInvalid" xml:space="preserve">
-    <value>This CNPJ is invalid.</value>
+  <data name="DigitalCertificate" xml:space="preserve">
+    <value>Certificado Digital</value>
   </data>
-  <data name="FileMaxLength" xml:space="preserve">
-    <value>The uploaded file exceeds 28,5 MB</value>
+  <data name="Title" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>O campo Nome é obrigatório.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuários</value>
   </data>
 </root>

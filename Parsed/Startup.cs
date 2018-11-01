@@ -15,17 +15,19 @@ using Parsed.Services;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using System.Security.Claims;
 
 namespace Parsed
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+     
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -96,5 +98,6 @@ namespace Parsed
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
     }
 }

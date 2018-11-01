@@ -17,12 +17,16 @@ namespace Parsed.Models
 
         public string LastName { get; set; }
 
-        public string FullName {
-            get {
+        public string FullName
+        {
+            get
+            {
                 return String.Concat(FirstName, " ", LastName);
             }
         }
 
+        public DateTime CreationDate { get; set; }
+        
         public virtual IList<CompanyUser> Companies { get; set; }
 
         #endregion

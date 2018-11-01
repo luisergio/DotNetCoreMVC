@@ -30,6 +30,7 @@ namespace Parsed.Migrations
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
@@ -48,21 +49,6 @@ namespace Parsed.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Company",
-                columns: table => new
-                {
-                    ID = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CNPJ = table.Column<string>(nullable: false),
-                    DigitalCertificate = table.Column<byte[]>(nullable: true),
-                    Title = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Company", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,6 +158,29 @@ namespace Parsed.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Company",
+                columns: table => new
+                {
+                    ID = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CNPJ = table.Column<string>(nullable: false),
+                    CreatedByID = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: false),
+                    DigitalCertificate = table.Column<byte[]>(nullable: true),
+                    Title = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Company", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Company_AspNetUsers_CreatedByID",
+                        column: x => x.CreatedByID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CompanyUser",
                 columns: table => new
                 {
@@ -240,6 +249,11 @@ namespace Parsed.Migrations
                 table: "Company",
                 column: "CNPJ",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Company_CreatedByID",
+                table: "Company",
+                column: "CreatedByID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CompanyUser_UserID",

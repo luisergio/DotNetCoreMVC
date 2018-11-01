@@ -12,7 +12,7 @@ using System;
 namespace Parsed.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181030193306_Initial")]
+    [Migration("20181031220758_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -140,6 +140,8 @@ namespace Parsed.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<DateTime>("CreationDate");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -193,6 +195,10 @@ namespace Parsed.Migrations
                     b.Property<string>("CNPJ")
                         .IsRequired();
 
+                    b.Property<string>("CreatedByID");
+
+                    b.Property<DateTime>("CreationDate");
+
                     b.Property<byte[]>("DigitalCertificate");
 
                     b.Property<string>("Title")
@@ -202,6 +208,8 @@ namespace Parsed.Migrations
 
                     b.HasIndex("CNPJ")
                         .IsUnique();
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Company");
                 });
@@ -265,6 +273,13 @@ namespace Parsed.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Parsed.Models.Company", b =>
+                {
+                    b.HasOne("Parsed.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID");
                 });
 
             modelBuilder.Entity("Parsed.Models.CompanyUser", b =>
