@@ -117,7 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Banner1Description" xml:space="preserve">
+    <value>Análise gerencial realizada com base em uma plataforma de inteligência de negócios e apresentada em uma linguagem simples e profissional.
+
+Tenha a análise de suas finanças em tempo real.</value>
+  </data>
+  <data name="Banner1Title" xml:space="preserve">
+    <value>Gestão Financeira</value>
+  </data>
+  <data name="Banner2Description" xml:space="preserve">
+    <value>Estabeleça um controle de suas finanças com o auxílio da nossa plataforma. Estabeleça as metas e deixe o controle por nossa plataforma. Realizamos a captura de dados de suas operações e mantemos o acompanhamento sempre atualizado.</value>
+  </data>
+  <data name="Banner2Title" xml:space="preserve">
+    <value>Controle Orçamentário</value>
+  </data>
+  <data name="Banner3Description" xml:space="preserve">
+    <value>Tenha um programa de compliance de alta performance com o auxílio da nossa plataforma de inteligência de negócios. 
+
+Evite fraudes e desvios de recursos em sua empresa.</value>
+  </data>
+  <data name="Banner3Title" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Já pensou em ter a sua disposição uma equipe de alto nível fornecendo informações importantes para sua tomada de decisões, suporte fiscal e contábil além de prevenção efetiva contra fraudes?
+
+Agora, imagine ter acesso a tudo isso de forma rápida e clara, com relatórios transparentes e simples de entender.
+
+A Parsed inovou e tornou isso possível através de uma gama de serviços especializados de consultoria unindo uma plataforma que cruza dados analíticos relevantes e a expertise de uma  equipe especialmente dedicada a lhe fornecer todas as informações necessárias para o sucesso de sua empresa.</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Simplificamos para você acertar nas decisões!</value>
   </data>
 </root>

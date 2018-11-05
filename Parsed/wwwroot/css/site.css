@@ -34,7 +34,48 @@ body {
     }
 }
 
-/* CORES DA PARSED 
+
+
+/*################### Customizng Carrousel ###################*/
+
+
+
+@media (min-width: 576px) {
+    .carousel-inner .item {
+
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-inner .item {
+    }
+}
+
+@media (min-width: 992px) {
+
+    .carousel-inner {
+        max-height: 400px;
+    }
+
+    .carousel-inner .item {
+        position:center;
+    }
+}
+
+
+.home-image {
+    max-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-image img {
+    transform: translateY(-50%);
+}
+
+
+
+/*################### CORES DA PARSED ###################
 
     1: #004140
     2: #007D77

@@ -117,7 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Banner1Description" xml:space="preserve">
+    <value>Managerial analysis performed based on a business intelligence platform and presented in a simple and professional language.
+
+Have the analysis of your finances in real time.</value>
+  </data>
+  <data name="Banner1Title" xml:space="preserve">
+    <value>Financial Management</value>
+  </data>
+  <data name="Banner2Description" xml:space="preserve">
+    <value>Establish control of your finances with the help of our platform. Set goals and leave control by our platform. We carry out the data capture of your operations and keep the monitoring always up to date.</value>
+  </data>
+  <data name="Banner2Title" xml:space="preserve">
+    <value>Budget Control</value>
+  </data>
+  <data name="Banner3Description" xml:space="preserve">
+    <value>Have a high-performance compliance program with the help of our business intelligence platform.
+
+Avoid fraud and misuse of resources in your company.</value>
+  </data>
+  <data name="Banner3Title" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Have you considered having a high-level team at your disposal providing important information for your decision-making, fiscal and accounting support and effective fraud prevention?
+
+Now imagine having access to all of it quickly and clearly, with transparent and simple to understand reports.
+
+Parsed has innovated and made this possible through a range of specialized advisory services linking a platform that crosses relevant analytical data and the expertise of a team especially dedicated to providing you with all the information necessary for your company's success.</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Simplificamos para você acertar nas decisões!</value>
   </data>
 </root>
