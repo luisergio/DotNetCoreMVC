@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -124,10 +124,10 @@
     <value>Login</value>
   </data>
   <data name="RegisterNewUser" xml:space="preserve">
-    <value>Criar um novo usuÃ¡rio</value>
+    <value>Criar um novo usuário</value>
   </data>
   <data name="UseAnotherServiceToLogIn" xml:space="preserve">
-    <value>Utilize outro serviÃ§o para logar.</value>
+    <value>Utilize outro serviço para logar.</value>
   </data>
   <data name="UseLocalAccount" xml:space="preserve">
     <value>Utilize uma conta local para logar.</value>

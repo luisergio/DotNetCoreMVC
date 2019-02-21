@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,7 +62,9 @@ namespace Parsed.Controllers
 
             var model = new IndexViewModel
             {
-                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
@@ -87,13 +89,29 @@ namespace Parsed.Controllers
                 throw new ApplicationException(_localizer["UnableToLoadUser", _userManager.GetUserId(User)].Value);
             }
 
-            var email = user.Email;
-            if (model.Email != email)
+            var firstName = user.FirstName;
+            if (model.FirstName != firstName)
             {
-                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
-                if (!setEmailResult.Succeeded)
+                user.FirstName = model.FirstName;
+
+                var setFirstNameResult = _userManager.UpdateAsync(user).Result;
+
+                if (!setFirstNameResult.Succeeded)
                 {
-                    throw new ApplicationException(_localizer["ErrorSettingEmail", user.Id].Value );
+                    throw new ApplicationException(_localizer["ErrorSettingFirstName", user.Id].Value);
+                }
+            }
+
+            var lastName = user.LastName;
+            if (model.LastName != lastName)
+            {
+                user.LastName = model.LastName;
+
+                var setLastNameResult = _userManager.UpdateAsync(user).Result;
+
+                if (!setLastNameResult.Succeeded)
+                {
+                    throw new ApplicationException(_localizer["ErrorSettingLastName", user.Id].Value);
                 }
             }
 

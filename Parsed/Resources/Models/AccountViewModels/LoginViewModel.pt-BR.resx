@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,16 +121,16 @@
     <value>E-mail</value>
   </data>
   <data name="EmailInvalid" xml:space="preserve">
-    <value>O campo E-mail nÃ£o tem um endereÃ§o vÃ¡lido.</value>
+    <value>O campo E-mail não tem um endereço válido.</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
-    <value>O campo E-mail Ã© obrigatÃ³rio.</value>
+    <value>O campo E-mail é obrigatório.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Senha</value>
   </data>
   <data name="PasswordRequired" xml:space="preserve">
-    <value>O campo Senha Ã© obrigatÃ³rio.</value>
+    <value>O campo Senha é obrigatório.</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Lembrar-me?</value>

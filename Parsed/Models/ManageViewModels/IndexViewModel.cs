@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,14 +8,20 @@ namespace Parsed.Models.ManageViewModels
 {
     public class IndexViewModel
     {
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        [Required(ErrorMessage = "FirstNameRequired")]
+        [Display(Name = "FirstName")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "LastNameRequired")]
+        [Display(Name = "LastName")]
+        public string LastName { get; set; }
+
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Display(Name = "IsEmailConfirmed")]
         public bool IsEmailConfirmed { get; set; }
 
-        [Required(ErrorMessage = "EmailRequired")]
-        [EmailAddress(ErrorMessage = "EmailInvalid")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

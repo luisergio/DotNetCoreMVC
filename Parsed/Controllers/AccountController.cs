@@ -1,4 +1,4 @@
-Ã¯Â»Â¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -22,6 +22,7 @@ namespace Parsed.Controllers
     public class AccountController : Controller
     {
         private readonly IStringLocalizer<AccountController> _localizer;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -33,13 +34,15 @@ namespace Parsed.Controllers
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ILogger<AccountController> logger,
-            IStringLocalizer<AccountController> localizer)
+            IStringLocalizer<AccountController> localizer,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _localizer = localizer;
+            _roleManager = roleManager;
         }
 
         [TempData]
@@ -225,18 +228,25 @@ namespace Parsed.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.Email,
+                    Email = model.Email,
+                    CreationDate = DateTime.Now
+                };
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Novo usuário criado com ID " + user.Id + " e e-mail " + user.Email);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Novo usuário criado com ID " + user.Id + " e e-mail " + user.Email);
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -315,7 +325,12 @@ namespace Parsed.Controllers
                 {
                     throw new ApplicationException(_localizer["ErrorLoadingExternalLoginInformation"].Value);
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.Email,
+                    Email = model.Email
+                };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -442,6 +457,80 @@ namespace Parsed.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [HttpGet("{language}")]
+        [AllowAnonymous]
+        public ActionResult SetLanguage(string language)
+        {
+            string CookiesValue = "c="+ language + "|uic=" + language;
+            Response.Cookies.Append(".AspNetCore.Culture", CookiesValue);
+
+            return new EmptyResult();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Setup()
+        {
+            var companyAdminRole = await _roleManager.FindByNameAsync("CompanyAdmin");
+            if (companyAdminRole == null)
+            {
+                companyAdminRole = new IdentityRole("CompanyAdmin");
+                await _roleManager.CreateAsync(companyAdminRole);
+
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.view"));
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.create"));
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.update"));
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.users.view"));
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.users.manage"));
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.analitycs.view"));
+                await _roleManager.AddClaimAsync(companyAdminRole, new Claim("Permission", "company.analitycs.download"));
+            }
+
+            var companyViewerRole = await _roleManager.FindByNameAsync("CompanyViewer");
+            if (companyViewerRole == null)
+            {
+                companyViewerRole = new IdentityRole("CompanyViewer");
+                await _roleManager.CreateAsync(companyViewerRole);
+
+                await _roleManager.AddClaimAsync(companyViewerRole, new Claim("Permission", "company.view"));
+                await _roleManager.AddClaimAsync(companyViewerRole, new Claim("Permission", "company.analitycs.view"));
+                await _roleManager.AddClaimAsync(companyViewerRole, new Claim("Permission", "company.analitycs.download"));
+            }
+
+            var SystemAdminRole = await _roleManager.FindByNameAsync("SystemAdmin");
+            if (SystemAdminRole == null)
+            {
+                SystemAdminRole = new IdentityRole("SystemAdmin");
+                await _roleManager.CreateAsync(SystemAdminRole);
+
+                await _roleManager.AddClaimAsync(SystemAdminRole, new Claim("Permission", "company.view.all"));
+                await _roleManager.AddClaimAsync(SystemAdminRole, new Claim("Permission", "company.analitycs.view.all"));
+                await _roleManager.AddClaimAsync(SystemAdminRole, new Claim("Permission", "company.analitycs.manage.all"));
+            }
+
+            ApplicationUser user = await _userManager.FindByEmailAsync("sysadmin@parsed.com.br");
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    FirstName = "System Administrator",
+                    LastName = "Parsed",
+                    UserName = "sysadmin@parsed.com.br",
+                    Email = "sysadmin@parsed.com.br",
+                    CreationDate = DateTime.Now
+                };
+
+                var result = await _userManager.CreateAsync(user, "Sys!Admin2018");
+            }
+
+            if (!await _userManager.IsInRoleAsync(user, SystemAdminRole.Name))
+            {
+                await _userManager.AddToRoleAsync(user, SystemAdminRole.Name);
+            }
+
+            return Json(new { result= "OK"});
         }
 
         #region Helpers
